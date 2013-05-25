@@ -1,0 +1,4 @@
+import("snowfall","gtools","Rcpp","RcppArmadillo")
+useDynLib(hsphase)
+export("bmh","imageplot",".hblock","hbp","ssp","aio","phf","pm","rplot","hss","cs","para","recombinations","ohg",".simulateHalfsib","hh",".phfnoGenotype",".prSimple",".rpohhsphase",".fastdist")
+exportPattern("^[[:alpha:]]+")
