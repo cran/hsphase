@@ -11,7 +11,7 @@ ohd(genotypeMatrix, unique_check = FALSE, SNPs = 6000)
 }
 \arguments{
   \item{genotypeMatrix}{
-{\code{Matrix} half-sib genotypes (one half-sib per row, with SNP ordered by mapping position in the columns. Data should be numeric. Use 0, 1 and 2 respectively for AA, AB and BB. Use 9 for missing data)
+{\code{matrix} half-sib genotypes (one half-sib per row, with SNP ordered by mapping position in the columns. Data should be numeric. Use 0, 1 and 2 respectively for AA, AB and BB. Use 9 for missing data)
 }
 
 }
@@ -22,7 +22,7 @@ ohd(genotypeMatrix, unique_check = FALSE, SNPs = 6000)
 }
 
  \item{SNPs}{
-{\code{Integer} number of SNP to use
+{\code{integer} number of SNP to use
 }
 
 }

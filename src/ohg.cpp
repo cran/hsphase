@@ -5,7 +5,7 @@
 using namespace Rcpp;
 int make_nas(arma::mat & genotype)
 {
-  for (unsigned int i = 0; i < genotype.n_rows; i++)
+	for (unsigned int i = 0; i < genotype.n_rows; i++)
 	{
 		for (unsigned int j = 0; j < genotype.n_cols; j++)
 		{

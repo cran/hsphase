@@ -12,7 +12,7 @@ cs(halfsib, mapPath, separator = " ")
 
 \arguments{
   \item{halfsib}{
-\code{List} list with matrices of half-sib genotypes, one family per list item }
+\code{list} list with matrices of half-sib genotypes, one family per list item }
   \item{mapPath}{
 \code{character} path to the map file  (column 1 -> SNP names, column 2 -> chromosome name and column 3 -> SNP position in base pairs) or, alternatively, the name of a dataframe with the mapping information (in the same format)  
 }

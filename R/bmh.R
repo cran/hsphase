@@ -45,7 +45,10 @@ bmh <- function(GenotypeMatrix, forwardVectorSize = 30, excludeFP = TRUE, nsap =
         }
     })
     if (length(siregenotype[siregenotype == 1]) < 2) 
-        stop("Less than two heterozygote sites was detected ... ")
+	{
+        print(rownames(GenotypeMatrix))
+		stop("Less than two heterozygote sites was detected ... ")
+	}
     result <- .C("bmh", expandMat = as.integer(expandMat), zeroFrq = as.integer(zeroFreq), oneFreq = as.integer(oneFreq), 
         twoFreq = as.integer(twoFreq), nrow = as.integer(nrow(GenotypeMatrix)), ncol = as.integer(ncol(GenotypeMatrix)), 
         result = fMat, siregenotype = as.integer(siregenotype), FVS = as.integer(forwardVectorSize), FP = as.logical(excludeFP), 

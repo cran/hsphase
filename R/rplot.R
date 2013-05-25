@@ -13,11 +13,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http:#www.gnu.org/licenses/>.
 
-rplot <- function(x, distance, start = 1, end = ncol(x), maximum = 100, overwrite = FALSE)
+rplot <- function(x, distance, start = 1, end = ncol(x), maximum = 100, overwrite = FALSE, method = "constant")
 {
     if (!is.matrix(x)) 
         stop("The phase matrix must be matrix")
-    y <- pm(bmh(x))
+    y <- pm(bmh(x), method=method)
     y <- apply(y, 2, sum)
     if (missing(maximum))
     {

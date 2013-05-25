@@ -12,7 +12,6 @@
 
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http:#www.gnu.org/licenses/>.
-
 ssp <- function(blockMatrix, genotypeMatrix)
 {
     if (nrow(blockMatrix) != nrow(genotypeMatrix)) 
@@ -42,5 +41,8 @@ ssp <- function(blockMatrix, genotypeMatrix)
     })
     result <- .C("ssp", block = as.integer(blockMatrix), genotype = as.integer(genotypeMatrix), siregenotype = as.integer(siregenotype), 
         nrow = as.integer(nrow(genotypeMatrix)), ncol = as.integer(ncol(genotypeMatrix)), result = fMat)$result
-    t((result))
+    result <- t((result))
+	if(!is.null(colnames(genotypeMatrix)))
+	    colnames(result) <- colnames(genotypeMatrix)
+	result
 } 

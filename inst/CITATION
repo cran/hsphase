@@ -1,0 +1,19 @@
+citHeader("To cite hsphase in publications use:")
+
+citEntry(entry = "Article",
+  title        = "hsphase: an R package for pedigree reconstruction, detection of recombination events, phasing and imputation of half-sib family groups",
+  author       = personList(as.person("Mohammad H. Ferdosi"),
+                   as.person("Cedric Gondro")),
+  journal      = " under review ",
+  year         = "2014",
+  volume       = "1",
+  month        = "1",
+  pages        = "1",
+  url          = "/A/",
+
+  textVersion  =
+  paste("Ferdosi, MH, BP Kinghorn, JHJ van der Werf and C Gondro (2014).",
+        "hsphase: an R package for pedigree reconstruction, detection of recombination events, phasing and imputation of half-sib family groups.",
+        "",
+        "")
+)

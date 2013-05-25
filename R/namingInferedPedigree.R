@@ -15,33 +15,36 @@
 
 pedigreeNaming <- function(inferredPedigree, realPedigree)
 {
-  inferredPedigree <- inferredPedigree[inferredPedigree[,1]%in%realPedigree[,1],]
-  realPedigree <- realPedigree[realPedigree[,1]%in%inferredPedigree[,1],]
-  realPedigree <- realPedigree[, 1:2]
-  
-  colnames(realPedigree) <- colnames(inferredPedigree) <- c("id","group")
-  mergedPartition <- merge(realPedigree,inferredPedigree,by="id")
-  mergedPartition <- mergedPartition[order(mergedPartition[,2]),]
-  
-  
-  simfun<-function(x) {x}
-  opedigree <- aggregate(mergedPartition,by = list(mergedPartition$group.y),function(x)x)
-  
-  
-  index <- tapply(mergedPartition[,2],mergedPartition[,3],function(x)sort(table(as.character(x)),decreasing = T)[1],simplify = F)
-  frqReal <- table(unlist(lapply(index,names)))
-  morethan1 <- names(frqReal[frqReal>1])
-  for(i in 1:length(index))
-  {
-    if(all(morethan1!=names(index[[i]]) ))
-      inferredPedigree[inferredPedigree[,2] == names(index[i]),2] <- names(index[[i]]) 
-    else
-    {
-      ind <- which(unlist(lapply(index,names)) == names(index[[i]]))
-      sireName <- unlist(strsplit(names(sort(unlist(index[ind]),decreasing = T)[1]),split = "[.].*"))
-      inferredPedigree[inferredPedigree[,2] == sireName,2] <- names(index[[i]]) 
-    }
-    
-  }
-  inferredPedigree
+	inferredPedigree <- inferredPedigree[inferredPedigree[,1]%in%realPedigree[,1],]
+	realPedigree <- realPedigree[realPedigree[,1]%in%inferredPedigree[,1],]
+	realPedigree <- realPedigree[, 1:2]
+	
+	colnames(realPedigree) <- colnames(inferredPedigree) <- c("id","group")
+	realPedigree$group <- as.character(realPedigree$group)
+	inferredPedigree$group <- as.character(inferredPedigree$group)
+	
+	mergedPartition <- merge(realPedigree,inferredPedigree,by="id")
+	mergedPartition <- mergedPartition[order(mergedPartition[,2]),]
+	
+	
+	simfun<-function(x) {x}
+	opedigree <- aggregate(mergedPartition,by = list(mergedPartition$group.y),function(x)x)
+	
+	
+	index <- tapply(mergedPartition[,2],mergedPartition[,3],function(x)sort(table(as.character(x)),decreasing = T)[1],simplify = F)
+	frqReal <- table(unlist(lapply(index,names)))
+	morethan1 <- names(frqReal[frqReal>1])
+	for(i in 1:length(index))
+	{
+		if(all(morethan1!=names(index[[i]]) ))
+			inferredPedigree[inferredPedigree[,2] == names(index[i]),2] <- names(index[[i]]) 
+		else
+		{
+			ind <- which(unlist(lapply(index,names)) == names(index[[i]]))
+			sireName <- unlist(strsplit(names(sort(unlist(index[ind]),decreasing = T)[1]),split = "[.].*"))
+			inferredPedigree[inferredPedigree[,2] == sireName,2] <- names(index[[i]]) 
+		}
+		
+	}
+	inferredPedigree
 } 

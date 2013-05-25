@@ -10,12 +10,12 @@ pedigreeNaming(inferredPedigree, realPedigree)
 }
 \arguments{
   \item{inferredPedigree}{
-{\code{Matrix} inferred pedigree  (output of \code{\link{rpoh}} )}
+{\code{matrix} inferred pedigree  (output of \code{\link{rpoh}} )}
 
 }
 
 \item{realPedigree}{
-{\code{Matrix} } original pedigree
+{\code{matrix} } original pedigree
 
 }
 

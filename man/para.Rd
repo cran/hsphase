@@ -9,7 +9,7 @@ This function uses the list of matrices (the output of \emph{cs}) and runs one o
 }
 \usage{
 para(halfsibs, cpus = 1, option = "bmh", type = "SOCK", bmh_forwardVectorSize = 30,
-bmh_excludeFP = TRUE, bmh_nsap = 3)
+bmh_excludeFP = TRUE, bmh_nsap = 3, pmMethod = "constant")
 }
 \keyword{opposing-homozygote}
 
@@ -29,7 +29,7 @@ bmh_excludeFP = TRUE, bmh_nsap = 3)
 }
 
 \item{bmh_forwardVectorSize}{
-  \code{Integer} number of heterozygous sites used to validate recombination events or check for genotyping errors}
+  \code{integer} number of heterozygous sites used to validate recombination events or check for genotyping errors}
 
 
 \item{bmh_excludeFP}{
@@ -37,7 +37,10 @@ bmh_excludeFP = TRUE, bmh_nsap = 3)
 
 
 \item{bmh_nsap}{
-  \code{Integer} number of SNPs per block}
+  \code{integer} number of SNPs per block}
+
+\item{pmMethod}{
+  \code{character} method for creating the recombination matrix}
 }
 \details{
 Type of analysis  can be  \code{\link{bmh}}, \code{\link{ssp}}, \code{\link{aio}}, or rec (refer to \code{\link{pm}}, \code{\link{rplot}} and vignette for more information about rec).

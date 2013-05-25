@@ -514,8 +514,7 @@ int  phaseFunctionNoGenotype(int const *nrow, int const *ncol,
 
 	return (0);
 }
-int c2rRecombinations(const uint* matrix, const uint* nrow, const uint* ncol,
-		double* result)
+int c2rRecombinations(const uint* matrix, const uint* nrow, const uint* ncol, const uint* method, double* result)
 {
 	uint fAnchor = 0, loc1 = 0, loc2 = 0;
 	double ratio = 0;
@@ -549,7 +548,10 @@ int c2rRecombinations(const uint* matrix, const uint* nrow, const uint* ncol,
 						loc2 = j;
 						fAnchor = matrix[j];
 					}
-					ratio = 1;//1 / (double) (loc2 - loc1);
+					if (*method == 1)
+						ratio = 1;
+					else if (*method == 2)
+						ratio = 1 / (double) (loc2 - loc1);
 					for (uint k = loc1; k < loc2; k++)
 					{
 						result[k] = ratio;

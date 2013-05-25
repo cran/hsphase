@@ -12,11 +12,10 @@ Identification of recombination events, haplotype reconstruction and sire imputa
 \tabular{ll}{
 Package: \tab hsphase\cr
 Type: \tab Package\cr
-Version: \tab 1.2.4\cr
-Date: \tab 2013-5-25\cr
+Version: \tab 1.2.5\cr
+Date: \tab 2013-10-30\cr
 License: \tab GPL 3 \cr
 }
-
 \strong{Main Functions:} \cr
 \code{\link{bmh}}: Block partitioning\cr
 \code{\link{ssp}}: Sire inference\cr

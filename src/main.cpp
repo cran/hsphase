@@ -36,10 +36,10 @@ extern "C"
 {
 
 void hbphased(uint* matrix, uint *nrow, uint *ncol, uint* result,
-		uint* siregenotype)
+		uint* siregenotype, uint *str)
 {
 
-	block4Phase haplotypeblockphased(matrix, nrow, ncol, result, siregenotype);
+	block4Phase haplotypeblockphased(matrix, nrow, ncol, result, siregenotype, str);
 
 }
 }
@@ -141,10 +141,10 @@ void bmhr(int const * matrix, int* zeroFrq, int* oneFrq, int* twoFrq, int *nrow,
 extern "C"
 {
 
-void pm(uint* matrix, uint *nrow, uint *ncol, double* result)
+void pm(uint* matrix, uint *nrow, uint *ncol, uint *method,double* result)
 {
 
-	c2rRecombinations(matrix, nrow, ncol, result);
+	c2rRecombinations(matrix, nrow, ncol,method , result);
 
 }
 }

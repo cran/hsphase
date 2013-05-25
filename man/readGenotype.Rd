@@ -31,6 +31,11 @@ Use 9 for missing data. please refer to vignette for more information)
 
 }
 
+\note{
+Please refer to vignette for more information.
+}
+
+
 \value{
 Returns the genotype matrix.
 }

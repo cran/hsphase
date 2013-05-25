@@ -12,12 +12,12 @@ phf(GenotypeMatrix, blockMatrix, sirePhasedMatrix)
 }
 
 \arguments{
-  \item{GenotypeMatrix}{\code{Matrix} half-sib genotypes  (one half-sib per row, with SNP ordered by mapping position in the columns. Data should be numeric. Use 0, 1 and 2 respectively for AA, AB and BB. Use 9 for missing data).
+  \item{GenotypeMatrix}{\code{matrix} half-sib genotypes  (one half-sib per row, with SNP ordered by mapping position in the columns. Data should be numeric. Use 0, 1 and 2 respectively for AA, AB and BB. Use 9 for missing data).
 }
   \item{blockMatrix}{
-\code{Matrix} blocking structure (output of \code{\link{bmh}})
+\code{matrix} blocking structure (output of \code{\link{bmh}})
 }
-  \item{sirePhasedMatrix}{\code{Matrix}  imputed sire (output of \code{\link{ssp}})
+  \item{sirePhasedMatrix}{\code{matrix}  imputed sire (output of \code{\link{ssp}})
 }
 }
 \value{

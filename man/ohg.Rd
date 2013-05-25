@@ -11,7 +11,7 @@ ohg(genotypeMatrix, cpus = 2)
 }
 \arguments{
   \item{genotypeMatrix}{
-{\code{Matrix} genotype (Data should be numeric. Use 0, 1 and 2 respectively for AA, AB and BB. Use 9 for missing data)
+{\code{matrix} genotype (Data should be numeric. Use 0, 1 and 2 respectively for AA, AB and BB. Use 9 for missing data)
 }
 }
  \item{cpus}{

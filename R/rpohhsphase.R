@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http:#www.gnu.org/licenses/>.
 
-.rpohhsphase <- function(genotypeMatrix,oh,forwardVectorSize = 30,excludeFP = TRUE,nsap = 3, maxRec = 15)
+.rpohhsphase <- function(genotypeMatrix, oh, forwardVectorSize = 30, excludeFP = TRUE, nsap = 3, maxRec = 15)
 {
 	
 	cat("id group \n",file="temp.txt")

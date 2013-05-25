@@ -24,10 +24,11 @@
 #include "block4Phase.h"
 
 block4Phase::block4Phase(const uint *matrix, const uint *nrow, const uint *ncol,
-		uint *result, const uint *siregenotype)
+uint *result, const uint *siregenotype, const uint * str)
 {
 	SNP *halfsibStrands = new SNP[*nrow]; // real row
 	SNP sire;
+	str_ = *str;
 
 	for (uint i = 0; i < *ncol; i++)
 	{
@@ -86,25 +87,34 @@ block4Phase::~block4Phase()
 
 int block4Phase::sireStrdDetector(const SNP &sire, const SNP &halfsib)
 {
+    int std1 = 0, std2 = 0;
 	for (uint i = 0; i < sire.strand1.size(); i++)
 	{
-		if (sire.strand1[i] == sire.strand2[i]
-				&& halfsib.strand1[i] != halfsib.strand2[i])
+		if (sire.strand1[i] == sire.strand2[i] && halfsib.strand1[i] != halfsib.strand2[i])
 		{
-			if (sire.strand1[i] == halfsib.strand1[i])
-				return (1);
-			if (sire.strand1[i] == halfsib.strand2[i])
-				return (2);
+			if (sire.strand1[i] != halfsib.strand1[i])
+				std1 = std1 + 1;
+			if (sire.strand1[i] != halfsib.strand2[i])
+				std2 = std2 + 1;
 		}
 	}
 
+	if (std1 < std2)
+		return 1;
+	else
+		return 2;
 	return (0);
 }
 
-int block4Phase::blockMaker(SNP& sire, const SNP& halfsib,
-		int * block /* = 0 */, const uint* ncol /* = 0 */)
+int block4Phase::blockMaker(SNP& sire, const SNP& halfsib, int * block /* = 0 */, const uint* ncol /* = 0 */)
 {
-	int strand = this->sireStrdDetector(sire, halfsib);
+	int strand = 0;
+	if (str_ == 0)
+		strand = this->sireStrdDetector(sire, halfsib);
+	if (str_ == 1)
+		strand = 1;
+	if (str_ == 2)
+		strand = 2;
 	if (strand == 0)
 	{
 		for (uint i = 0; i < *ncol; i++)

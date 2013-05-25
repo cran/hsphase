@@ -54,7 +54,7 @@ int switchDetector(int *Memory, int *tempCol2, const int *nrow);
 int switchDetector(int *Memory, int *tempCol2, vector<int> &switches, int *nrow);
 int switchDetector(int *Memory, int *tempCol2, vector<int> &switches, const int *nrow);
 int phaseFunction(int const * genotypeMat, int const *nrow, int const *ncol, int const* blockMat, int const* sirePhasedMat, int* result);
-int c2rRecombinations(const uint* matrix, const uint* nrow, const uint* ncol, double* result);
+int c2rRecombinations(const uint* matrix, const uint* nrow, const uint* ncol, const uint* method, double* result);
 int recombinationFun(int const *matrix,int const * nrow,int const * ncol,int * result);
 int phaseFunctionNoGenotype(int const *nrow, int const *ncol, int const* blockMat, int const* sirePhasedMat, int* result);
 

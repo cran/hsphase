@@ -17,7 +17,7 @@ bmh_nsap = 3, output = "phase")
 
 }
 \item{bmh_forwardVectorSize}{
-  \code{Integer} number of heterozygous sites used to validate recombination events or check for genotyping errors}
+  \code{integer} number of heterozygous sites used to validate recombination events or check for genotyping errors}
 
 
 \item{bmh_excludeFP}{
@@ -25,7 +25,7 @@ bmh_nsap = 3, output = "phase")
 
 
 \item{bmh_nsap}{
-  \code{Integer} number of SNP per block to validate recombinations}
+  \code{integer} number of SNP per block to validate recombinations}
 
 \item{output}{
   \code{character} if equal to \code{phase} the 'aio' will only return the phasing results 
@@ -48,7 +48,7 @@ Only this function needs to be called to phase a half-sib family. The genotype's
  \code{\link{bmh}},  \code{\link{ssp}} and  \code{\link{phf}}
 }
 \examples{
-genotype=matrix(c(          # Define a Half-sib Genotype Matrix
+genotype <- matrix(c(          # Define a Half-sib Genotype Matrix
   2,1,0,                    # Individual 1
   2,0,0,                    # Individual 2
   0,0,2                     # Individual 3

@@ -50,7 +50,7 @@ class block4Phase
 {
 public:
 
-    block4Phase(const uint *matrix, const uint *nrow, const uint *ncol, uint *result, const uint *siregenotype);
+    block4Phase(const uint *matrix, const uint *nrow, const uint *ncol, uint *result, const uint *siregenotype, const uint * str);
     block4Phase(const block4Phase& orig);
     virtual ~block4Phase();
 
@@ -58,6 +58,7 @@ public:
     int blockMaker(SNP &sire, const SNP &halfsib, int * block = 0, const uint* ncol = 0);
 
 private:
+    int str_ ;
 
 };
 
