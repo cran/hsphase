@@ -1,5 +1,6 @@
 # This is a modified version of function which was written by Chris Seidel, available via this link:
 # http://www.phaget4.org/R/image_matrix.html
+
 imageplot <- function(x, title = c(), rv = FALSE, ...)
 {
     x[x == 1] <- 3

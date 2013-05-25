@@ -12,7 +12,7 @@ bmh(GenotypeMatrix, forwardVectorSize = 30, excludeFP = TRUE, nsap = 3)
 
 \arguments{
   \item{GenotypeMatrix}{
-          \code{Matrix} half-sib genotypes  (one half-sib per row, with SNP ordered by mapping position in the columns. Data should be numeric. Use 0, 1 and 2 respectively for AA, AB and BB. Use 9 for missing data).}
+          \code{Matrix} half-sib genotypes  (one half-sib per row, with SNP ordered by mapping position in the columns. Data should be numeric. Use 0, 1 and 2 respectively for AA, AB and BB. Use 9 for missing data)}
   
   \item{forwardVectorSize}{
   \code{Integer} number of heterozygous sites used to validate recombination events or check for genotyping errors}

@@ -13,16 +13,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http:#www.gnu.org/licenses/>.
 
-impute <- function(halfsib_parental_ld, halfsib_block_ld, sire_ld, sire_hd)
+impute <- function(halfsib_paternal_ld, halfsib_block_ld, sire_ld, sire_hd)
 {
-	snpld <- colnames(halfsib_parental_ld)
+	snpld <- colnames(halfsib_paternal_ld)
 	snphd <- colnames(sire_hd)
 	ldindex <- match(snpld,snphd)
 	nald <- which(is.na(ldindex))
 	if(length(nald)>0)
 	{
 		ldindex <- ldindex[-nald]
-		halfsib_parental_ld <- halfsib_parental_ld[,-nald]
+		halfsib_paternal_ld <- halfsib_paternal_ld[,-nald]
 		halfsib_block_ld <- halfsib_block_ld[,-nald]
 		sire_ld <- sire_ld[,-nald]
 	}
@@ -39,7 +39,7 @@ impute <- function(halfsib_parental_ld, halfsib_block_ld, sire_ld, sire_hd)
 		sire_hd <- sire_hd[c(2,1),]
 	}
 	
-	result <- matrix(0,ncol=ncol(sire_hd),nrow=nrow(halfsib_parental_ld))
+	result <- matrix(0,ncol=ncol(sire_hd),nrow=nrow(halfsib_paternal_ld))
 	result[,ldindex] <- halfsib_block_ld
 	result[result==1] <- 3
 	result[result==2] <- 4

@@ -8,20 +8,20 @@
 \title{
 Crossover Detection}
 \description{
-Detect all possible crossover events}
+Detect all possible crossover events.}
 \usage{
 co(genotypeMatrix)
 }
 \arguments{
   \item{genotypeMatrix}{
-{\code{Matrix} half-sib genotypes  (one half-sib per row, with SNP ordered by mapping position in the columns. Data should be numeric. Use 0, 1 and 2 for respectively AA, AB and BB. Use 9 for missing data).
+{\code{Matrix} half-sib genotypes  (one half-sib per row, with SNP ordered by mapping position in the columns. Data should be numeric. Use 0, 1 and 2 for respectively AA, AB and BB. Use 9 for missing data)
 }
 
 }
 }
 
 \value{
-Returns a matrix with the number of crossover events for each site
+Returns a matrix with the number of crossover events for each site.
 }
 
 
@@ -37,8 +37,7 @@ co(genotype)
 }
 
 \keyword{crossover}
-\keyword{cross}
-\keyword{over}
+
 
 
 

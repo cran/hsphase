@@ -5,7 +5,7 @@
 Probability Matrix
 }
 \description{
-Creates a recombination matrix based on the blocking structure} 
+Creates a recombination matrix based on the blocking structure.} 
 \usage{
 pm(blockMatrix) 
 }
@@ -16,7 +16,7 @@ pm(blockMatrix)
 }
 }
 \details{
-This function finds the recombination between two consecutive sites, and marks the recombination site with a 1; if there are unknown sites between two blocks it will also mark these sites with a 1}
+This function finds the recombination between two consecutive sites, and marks the recombination site with a 1; if there are unknown sites between two blocks it will also mark these sites with a 1.}
 \examples{
 genotype <- matrix(c(
 0,2,0,1,0,

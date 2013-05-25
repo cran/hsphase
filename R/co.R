@@ -15,29 +15,31 @@
 
 co <- function(genotypeMatrix)
 {
-    if (is.null(genotypeMatrix)) 
-        stop("Invalid input!")
-    if (!is.matrix(genotypeMatrix)) 
-        stop("genotypeMatrix should be a MATRIX")
-    if (length(genotypeMatrix[genotypeMatrix != 9 & genotypeMatrix != 0 & genotypeMatrix != 2 & genotypeMatrix != 
-        1]) > 0) 
-        stop("genotypeMatrix must contain only 0, 1, 2 or 9")
-    zeroFreq <- colMeans(genotypeMatrix == 0) * nrow(genotypeMatrix)
-    oneFreq <- colMeans(genotypeMatrix == 1) * nrow(genotypeMatrix)
-    twoFreq <- colMeans(genotypeMatrix == 2) * nrow(genotypeMatrix)
-    hetsite <- apply(genotypeMatrix, 2, function(x)
-    {
-        if (any(x == 0) && any(x == 2))
-        {
-            x <- 1
-        }
-        else
-        {
-            x <- 0
-        }
-    })
-    genotypeMatrix[, which(hetsite == 0)] <- 9
-    genotypeMatrix[genotypeMatrix == 1] <- 9
-    result <- .Call("co", genotypeMatrix, hetsite, PACKAGE = "hsphase")
-    result[, -ncol(result)]
+	if (is.null(genotypeMatrix)) 
+		stop("Invalid input!")
+	if (!is.matrix(genotypeMatrix)) 
+		stop("genotypeMatrix should be a MATRIX")
+	if (length(genotypeMatrix[genotypeMatrix != 9 & genotypeMatrix != 0 & genotypeMatrix != 2 & genotypeMatrix != 1]) > 0) 
+		stop("genotypeMatrix must contain only 0, 1, 2 or 9")
+	
+	
+	zeroFreq <- colMeans(genotypeMatrix == 0) * nrow(genotypeMatrix)
+	oneFreq <- colMeans(genotypeMatrix == 1) * nrow(genotypeMatrix)
+	twoFreq <- colMeans(genotypeMatrix == 2) * nrow(genotypeMatrix)
+	
+	hetsite <- apply(genotypeMatrix, 2, function(x)
+			{
+				if (any(x == 0) && any(x == 2))# && any(x==1))
+				{
+					x <- 1
+				} else
+				{
+					x <- 0
+				}
+			})
+	
+	genotypeMatrix[,which(hetsite==0)] <- 9;
+	genotypeMatrix[genotypeMatrix==1] <- 9;
+	result <- .Call("co", genotypeMatrix, hetsite, PACKAGE = "hsphase")
+	result[,-ncol(result)]
 } 

@@ -22,6 +22,5 @@
 
 #ifndef FASTDIST_H_
 #define FASTDIST_H_
-
-
+#include <cstdlib> 
 #endif /* FASTDIST_H_ */

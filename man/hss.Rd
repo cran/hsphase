@@ -27,7 +27,7 @@ and the second column with the sires IDs
 }
 
 \note{
-Pedigree must have at least two columns with sample ids (Column 1) and sire ids (Column 2)
+Pedigree must have at least two columns with sample ids (Column 1) and sire ids (Column 2).
 }
 \details{
 Only half-sib groups that have more than 3 individuals will be returned.

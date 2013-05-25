@@ -2,6 +2,7 @@
 
 \documentclass[10pt,a4paper]{article}
 \usepackage[latin1]{inputenc}
+
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -28,6 +29,7 @@
     urlcolor=cyan           % color of external links
 }
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 
 
 \title{\emph{hsphase} -- an R package for identification of recombination
@@ -187,7 +189,7 @@ format used by \emph{hsphase}. Essentially, these functions will simply split a 
 Three input files are required to use the \emph{hss} and \emph{cs} functions:
 \subsubsection{Genotype File}
 \label{sec: Genotype File}
-A flat file with genotypes (ID x SNP), where the SNP names are in the first row
+A flat file with genotypes (ID $\times$ SNP), where the SNP names are in the first row
 and the ID of each individual in the first column (ID should not have any header). The delimiter can be
 specified via the \emph{readGenotype} function (Section \ref{sec: Reading the
 Genotype File}). The IDs and SNP names should be unique. SNP are denoted by 0,
@@ -218,7 +220,7 @@ position in base pairs. The first line must contain a header with \emph{"Name Ch
 \label{sec: Functions}
 \subsubsection{Half-sib Family Separator (hss)}
 \label{sec: Half-sib Family Separator (hss)}
-The \emph{hss} function generates a list of matrices (ID x SNP), one for each
+The \emph{hss} function generates a list of matrices (ID $\times$ SNP), one for each
 of the half-sib groups that have at least 4 offspring per sire. The input are
 the genotype and pedigree files. The names of the list are the names of the sires in the pedigree file.
 
@@ -230,11 +232,11 @@ halfsib <- hss(pedigree,genotype)
 \label{sec: Chromosome Separator (cs)}
 After splitting the data into family groups, the \emph{cs} function can be used
 to separate the \emph{hss} data into the different chromosomes based on a map
-file. The output is also a list of matrices (ID x SNP, one for each family and
+file. The output is also a list of matrices (ID $\times$ SNP, one for each family and
 chromosome). The \emph{names} in the R output list are the half-sib groups name
 (sire ID) and their chromosome numbers separated by an underscore (\_). Subsets
 can be found using e.g. \emph{grep} (Section \ref{sec: Quick Guide}). Data in the correct format can also be
-built manually; it's simply a split list of numeric matrices (ID x SNP with 0,
+built manually; it's simply a split list of numeric matrices (ID $\times$ SNP with 0,
 1, 2 and 9), with SNP ordered by BP position. One matrix for each chromosome and sire.
 
 \begin{verbatim}
@@ -326,15 +328,16 @@ oh <- ohg(d)
 heatmap(oh,symm=T,col=gray.colors(16,start=0,end=1),RowSideColors=as.character(c(rep(1,40),rep(2,40))),ColSideColors=as.character(c(rep(1,5),rep(2,40),rep(1,35))))
 @
 
-The heatmap assists indentification of pedigree errors and can help to check if the pedigree reconstruction results seem correct. The
+The heatmap assists identification of pedigree errors and can help to check if the pedigree reconstruction results seem correct. The
  \emph{inferredPedigree} (Section \ref{sec: Reconstruction pedigree of half-sib (rpoh)}) and \emph{realPedigree} are used by the \emph{hh}
 function to create, respectively, the \emph{RowSideColors} and \emph{ColSideColors}. In practice either can be freely interchanged to colour code the side barss of the heatmap.
 A maximum of 21 colours are used by the heatmap. If there are more half-sib families, colours will be repeated.    
 
+
 \section{Diagnostic Tools}
 \subsection{Probability Matrix (pm)}
 \label{sec: Probability Matrix (pm)}
-The \emph{pm} function utilizes the block structure matrix (from \emph{bmh}) to
+The \emph{pm} function utilises the block structure matrix (from \emph{bmh}) to
 find recombination sites. It returns a matrix of 0s and 1s. 1 indicates that a
 recombination occurred between two consecutive SNP or 0 for no recombination.
 If the exact position of the recombination cannot be determined the region of uncertainty is filled with 1s.
@@ -351,7 +354,7 @@ genotype <- matrix(c(
 pm(result)
 \end{verbatim}
 
-This fuction can be useful to identify mapping errors. For example, if (very) large recombination rates are observed at a particular SNP across families.
+This function can be useful to identify mapping errors. For example, if (very) large recombination rates are observed at a particular SNP across families.
 
 \subsection{Haplotype Block of Phased Data (hbp)}
 \label{sec: Haplotype Block of Phased Data (hbp)}
@@ -410,54 +413,60 @@ where the rownames and colnames are the IDs of individuals.
 ohg(genotype, cpus = 2)
 \end{verbatim}
 
-\emph{Note: } This function utilizes OpenMP in Linux and the number of
-\emph{cpus} is only valid in Linux.
+\emph{Note: } This function utilises OpenMP in GNU/Linux and the number of
+\emph{cpus} is only valid in GNU/Linux.
 
 
-\subsection{Pedigree Reconstruction of half-sib families (rpoh)}
+\subsection{Pedigree Reconstruction of Half-sib Families (rpoh)}
 \label{sec: Reconstruction pedigree of half-sib (rpoh)}
-The \emph{roph} function reconstructs half-sib families; i.e. splits the individuals into half-sib groups. 
+The \emph{rpoh} function reconstructs half-sib families; i.e. splits the individuals into half-sib groups. 
 
 \begin{verbatim}
-rpoh(genotypeMatrix, ohg(genotype), method = "simple")
+rpoh(oh = ohg(genotype), snpNooh = 50, method = "simple")
 \end{verbatim}
 
 Two methods \emph{simple} and \emph{recombinations} can be utilised to
-reconstruct the pedigree. The \emph{simple} methgod calculate the maximum number
+reconstruct the pedigree. The \emph{simple} method calculate the maximum number
 of opposing homozygote in the half-sib family based on the provided
-\emph{Intercept} and \emph{coefficient} (The defualt values are tested with
-cattle and sheep genotypes). The \emph{recombinations}  method caculte the numer
-of recombinations utising the \emph{bmh} and \emph{rec} functions.\\ 
+\emph{intercept} and \emph{coefficient} (The default values are tested with
+cattle and sheep genotypes). The \emph{recombinations}  method calculate the number
+of recombinations utilising the \emph{bmh} and \emph{rec} functions.\\ 
 
 
-\emph{Note 1:} The functions \emph{ohg} and \emph{roph} with
+\emph{Note 1:} The functions \emph{ohg} and \emph{rpoh} with
 \emph{recombinations} method can be slow with very large datasets. The genotype
 matrix with only one chromosome is usually sufficient to separate the
 individuals into half-sib groups and can speed up the process.\\
 
 
-\emph{Note 2:} The first argument of \emph{roph} function (genotypeMatrix) must
-use only genotypic data from a single chromosome.
+\emph{Note 2:} The first argument of \emph{rpoh} function (genotypeMatrix) must
+use only genotypic data from a single chromosome.\\
+
+\emph{Note 3:} The \emph{snpNooh} is the number of SNPs (divided by 1000) used to create opposing homozygote matrix.
+
 
 \subsection{Fix Pedigree Errors (pedigreeNaming)}
 The \emph{pedigreeNaming} function tries to link the inferred half-sib family groups to the sire IDs in the original pedigree and fix errors. This works well if the original pedigree is relatively correct
- but individuals will be missasigned if most of the individuals originally allocated to a sire are not its offspring.
+ but individuals will be misassigned if most of the individuals originally allocated to a sire are not its offspring.
 
 \section{Imputation}
 The \emph{impute} function impute the low density SNP marker to high density
 marker utlising the high density haplotype of sire.
 
 \begin{verbatim}
-impute(halfsib_parental_ld, sire_ld, sire_hd)
+impute(halfsib_paternal_ld, sire_ld, sire_hd)
 \end{verbatim}
 
-The \emph{halfsib\_parental\_ld} is the parental strand of half--sibs with
+The \emph{halfsib\_paternal\_ld} is the paternal strand of half--sibs with
 low density markers (output of \emph{phf} - Section \ref{sec:
 Half-Sib Family Phasing (phf)}). The \emph{sire\_ld} is the haplotype of sire
 with low density marker (output of \emph{ssp} - Section \ref{sec: Sire
 Imputation and Phasing (ssp)}). The \emph{sire\_hd} is the haplotype of sire
 that can be either phased sire haplotype or the haplotype of sire assembled
 from sequence data.
+
+\emph{Note:} The \emph{halfsib\_paternal\_ld} and \emph{sire\_hd} must have \emph{colnames} which are the SNP names.\\
+
 
 \section{Quick Guide}
 \label{sec: Quick Guide}
@@ -520,7 +529,7 @@ chromosomeMatch <- function(listHalfsibs, numberChr)
 }
 \end{verbatim}
 
-The \emph{numberChr} is the number of chromosomes.
+The \emph{numberChr} is the number of chromosomes. \\
 
 \emph{Note:} A comprehensive demo and example dataset is available from
 \href{http://www-personal.une.edu.au/~cgondro2/hsphase.htm}{Cedric Gondro's home

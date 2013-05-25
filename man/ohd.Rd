@@ -31,8 +31,11 @@ ohd(genotypeMatrix, unique_check = FALSE, SNPs = 6000)
 \value{
 Returns a vector with the number of heterozygous sites that each sample caused
 }
+\note{
+This function can be used to identify pedigree errors; i.e., the outliers.
+}
 \author{
-This method is suggested by Bruce Tier <btier@une.edu.au>.
+This method is suggested by Bruce Tier <btier@une.edu.au> to identify pedigree errors.
 }
 
 \examples{
@@ -43,7 +46,6 @@ genotype=matrix(c(
   ), byrow=TRUE, ncol=3)    
   
 ohd(genotype)             
-
 }
 
 \keyword{opposing homozygote}

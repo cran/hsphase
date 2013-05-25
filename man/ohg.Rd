@@ -4,18 +4,18 @@
 Matrix of Opposing Homozygotes 
 }
 \description{
-Creates a matrix of opposing homozygotes from the genotype matrix
+Creates a matrix of opposing homozygotes from the genotype matrix.
 }
 \usage{
 ohg(genotypeMatrix, cpus = 2)
 }
 \arguments{
   \item{genotypeMatrix}{
-{\code{Matrix} genotype (Data should be numeric. Use 0, 1 and 2 respectively for AA, AB and BB. Use 9 for missing data).
+{\code{Matrix} genotype (Data should be numeric. Use 0, 1 and 2 respectively for AA, AB and BB. Use 9 for missing data)
 }
 }
  \item{cpus}{
-{\code{integer} set the number of CPUs).
+{\code{integer} set the number of CPUs
 }
 }
 }

@@ -22,8 +22,6 @@
  */
 
 #include "FastDist.h"
-#include <cmath>
-
 using namespace std;
 
 int dist(int const * matrix, const int* nrow, const int* ncol, int* result)
