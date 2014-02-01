@@ -5,7 +5,7 @@ Impute of Low Density SNP Marker to High Density (Paternal Strand)}
 \description{
 Impute the paternal strand from low density to high density utilising high density sire haplotype.}
 \usage{
-impute(halfsib_genotype_ld, sire_hd,bmh_forwardVectorSize = 30, 
+impute(halfsib_genotype_ld, sire_hd, bmh_forwardVectorSize = 30, 
 bmh_excludeFP = TRUE, bmh_nsap = 3)
 }
 \arguments{

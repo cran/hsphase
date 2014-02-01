@@ -15,7 +15,7 @@
 ssp <- function(blockMatrix, genotypeMatrix)
 {
     if (nrow(blockMatrix) != nrow(genotypeMatrix)) 
-        stop("blockMatrix and genotypeMatrix must have yhe same number of rows")
+        stop("blockMatrix and genotypeMatrix must have the same number of rows")
     if (!is.matrix(blockMatrix)) 
         stop("blockMatrix should be a MATRIX")
     if (!is.matrix(genotypeMatrix)) 

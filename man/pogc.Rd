@@ -13,7 +13,7 @@ pogc(oh, genotypeError)
   \item{oh}{ \code{integer} opposing homozygotes matrix (Output of \code{\link{ohg}})
 }
   \item{genotypeError}{\code{integer}
-percent of genotypeing error 
+number of genotypeing error allowed in the \code{oh} matrix
 }
 }
 
@@ -35,19 +35,18 @@ chr <- list()
 for(i in 1:5)
 {
 	chr[[i]] <- .simulateHalfsib(numInd = 20, numSNP = 5000, recbound = 1:10)
-	sire[[i]] <- ssp(bmh(chr[[i]]),chr[[i]])
-	sire[[i]] <- sire[[i]][1,]+sire[[i]][2,]
-	sire[[i]][sire[[i]]==18] <- 9
+	sire[[i]] <- ssp(bmh(chr[[i]]), chr[[i]])
+	sire[[i]] <- sire[[i]][1,] + sire[[i]][2,]
+	sire[[i]][sire[[i]] == 18] <- 9
 }
 
 Genotype <- do.call(rbind, chr)
-rownames(Genotype) <- 6:(nrow(Genotype)+5)
+rownames(Genotype) <- 6:(nrow(Genotype) + 5)
 sire <- do.call(rbind, sire)
 rownames(sire) <- 1:5
 Genotype <- rbind(sire, Genotype)
 oh <- ohg(Genotype)  # creating the Opposing Homozygote matrix
 pogc(oh, 5)
-
 }
 
 \keyword{pedigree}

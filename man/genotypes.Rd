@@ -1,8 +1,8 @@
 \name{genotypes}
 \docType{data}
 \alias{genotypes}
-\title{Example Genotype Data Set}
-\description{An example genotype matrix for hsphase.  
+\title{Example of Genotype Data Set}
+\description{An example of genotype matrix for hsphase.  
 }
 \usage{
 data(genotypes)

@@ -26,12 +26,12 @@ i.e. each element holds the number of recombinations identified for each sample.
  \code{\link{bmh}
 }}
 \examples{
-genotype=matrix(c(          
+genotype <- matrix(c(          
   2,1,0,0,                    
   2,0,2,2,                    
   0,0,2,2,
   0,2,0,0                     
-  ), byrow=TRUE, ncol=4)      
+  ), byrow = TRUE, ncol = 4)      
   
 recombinations(bmh(genotype))             
 }

@@ -7,16 +7,16 @@ Half-sib Family Splitter}
 Splits the dataset into half-sib family groups based on a pedigree.
 }
 \usage{
-hss(pedigree, genotype, check = TRUE )
+hss(pedigree, genotype, check = TRUE)
 }
 
 \arguments{
   \item{pedigree}{
- \code{Matrix}  the pedigree matrix should contain at least two columns, the first column with the half-sib IDs
+ \code{matrix}  the pedigree matrix should contain at least two columns, the first column with the half-sib IDs
 and the second column with the sires IDs
 }
   \item{genotype}{
-\code{Matrix} A genotype matrix with SNP ordered by mapping position in the columns. Data should be numeric. Use 0, 1 and 2 respectively for AA, AB and BB. Use 9 for missing data
+\code{matrix} genotype matrix with SNP ordered by mapping position in the columns. Data should be numeric. Use 0, 1 and 2 respectively for AA, AB and BB. Use 9 for missing data
 } 
 
 

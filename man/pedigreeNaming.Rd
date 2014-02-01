@@ -4,7 +4,7 @@
 Fix Pedigree Errors
 }
 \description{
-Tries to link the inferred pedigree from rpoh with the sire IDs in the original pedigree and fix pedigree errors.}
+Tries to link the inferred pedigree from \code{\link{rpoh}} with the sire IDs in the original pedigree and fix pedigree errors.}
 \usage{
 pedigreeNaming(inferredPedigree, realPedigree)
 }

@@ -13,19 +13,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http:#www.gnu.org/licenses/>.
 
-ohg <- function(genotypeMatrix, cpus = 2)
+ohg <- function(GenotypeMatrix)
 {
-	if (is.null(genotypeMatrix)) 
-		stop("Invalid input!")
-	if (!is.matrix(genotypeMatrix)) 
-		stop("Genotype should be a MATRIX")
-	if (length(genotypeMatrix[genotypeMatrix != 9 & genotypeMatrix != 0 & genotypeMatrix != 
-							2 & genotypeMatrix != 1]) > 0) 
-		stop("Genotype must contain only 0, 1, 2 or 9")
-	
-	result <- .Call( "ohg", genotypeMatrix, cpus, PACKAGE = "hsphase" )
-	rownames(result[[1]]) <- rownames(genotypeMatrix)
-	colnames(result[[1]]) <- rownames(genotypeMatrix)
-	result[[1]][lower.tri(result[[1]])] <- t(result[[1]])[lower.tri(result[[1]])]
-	result[[1]]
+	if (length(GenotypeMatrix[GenotypeMatrix != 9 & GenotypeMatrix != 0 & GenotypeMatrix != 2 & GenotypeMatrix != 
+							1]) > 0) 
+		stop("GenotypeMatrix must contain only 0, 1, 2 or 9")
+	n <- nrow(GenotypeMatrix) * nrow(GenotypeMatrix)
+	fMat <- matrix(as.integer(rep(0, n)), nrow = nrow(GenotypeMatrix))
+	expandMat <- as.numeric(t(GenotypeMatrix))
+	result <- .C("ohp", expandMat = as.integer(expandMat), nrow = as.integer(nrow(GenotypeMatrix)), 
+			ncol = as.integer(ncol(GenotypeMatrix)), result = fMat)$result
+	result[upper.tri(result)] <- t(result)[upper.tri(result)]
+	rownames(result) <- colnames(result)  <- rownames(GenotypeMatrix)
+	result
 }

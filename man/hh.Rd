@@ -4,7 +4,7 @@
 Heatmap of Half-sibs
 }
 \description{
-The hh function creates a heatmap of the half-sib families using the
+The \code{hh} function creates a heatmap of the half-sib families using the
 matrix of opposing homozygotes.}
 \usage{
 	hh(oh, inferredPedigree, realPedigree, pedOnly = TRUE)
@@ -36,9 +36,9 @@ matrix of opposing homozygotes.}
 	\code{\link{ohg}} and \code{\link{rpoh}}
 }
 \examples{
-c1h1 <- .simulateHalfsib(numInd = 62,numSNP = 5000)
-c1h2 <- .simulateHalfsib(numInd = 38,numSNP = 5000)
-Genotype <- rbind(c1h1,c1h2)
+c1h1 <- .simulateHalfsib(numInd = 62, numSNP = 5000)
+c1h2 <- .simulateHalfsib(numInd = 38, numSNP = 5000)
+Genotype <- rbind(c1h1, c1h2)
 oh <- ohg(Genotype) # creating the Opposing Homozygote matrix
 hh(oh)
 }

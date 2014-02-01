@@ -29,7 +29,7 @@ ohd(genotypeMatrix, unique_check = FALSE, SNPs = 6000)
 }
 
 \value{
-Returns a vector with the number of heterozygous sites that each sample caused
+Returns a vector with the number of heterozygous sites that each sample caused.
 }
 \note{
 This function can be used to identify pedigree errors; i.e., the outliers.
@@ -39,11 +39,11 @@ This method is suggested by Bruce Tier <btier@une.edu.au> to identify pedigree e
 }
 
 \examples{
-genotype=matrix(c(        
+genotype <- matrix(c(        
   2,1,0,                  
   2,0,0,                  
   0,0,2                   
-  ), byrow=TRUE, ncol=3)    
+  ), byrow = TRUE, ncol = 3)    
   
 ohd(genotype)             
 }

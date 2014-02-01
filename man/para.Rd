@@ -5,7 +5,7 @@
 Parallel Analysis of Data
 }
 \description{
-This function uses the list of matrices (the output of \emph{cs}) and runs one of the options, on each element of the list, in parallel. 
+This function uses the list of matrices (the output of \code{\link{cs}}) and runs one of the options, on each element of the list, in parallel. 
 }
 \usage{
 para(halfsibs, cpus = 1, option = "bmh", type = "SOCK", bmh_forwardVectorSize = 30,
@@ -43,7 +43,7 @@ bmh_excludeFP = TRUE, bmh_nsap = 3, pmMethod = "constant")
   \code{character} method for creating the recombination matrix}
 }
 \details{
-Type of analysis  can be  \code{\link{bmh}}, \code{\link{ssp}}, \code{\link{aio}}, or rec (refer to \code{\link{pm}}, \code{\link{rplot}} and vignette for more information about rec).
+Type of analysis  can be  \code{\link{bmh}}, \code{\link{ssp}}, \code{\link{aio}}, \code{\link{pm}}, or rec (refer to \code{\link{pm}}, \code{\link{rplot}} and vignette for more information about rec).
 
 }
 \value{

@@ -30,7 +30,8 @@ reverse the colour
 White indicates regions of unknown origin, red and blue correspond to the two sire strands.
 }
 \author{
-This is a modified version of a function written by Chris Seidel. http://www.phaget4.org/R/image_matrix.html
+This is a modified version of a function written by Chris Seidel. \cr
+http://www.phaget4.org/R/image_matrix.html
 }
 
 \seealso{
@@ -42,7 +43,7 @@ genotype <- matrix(c(
 2,0,1,2,2,
 2,2,1,0,2,
 2,2,1,1,1,
-0,0,2,1,0), ncol=5, byrow=TRUE) # each row contains the SNP of individuals
+0,0,2,1,0), ncol = 5, byrow = TRUE) # each row contains the SNP of individuals
 imageplot(bmh(genotype))
 }
 \keyword{block}

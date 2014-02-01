@@ -3,4 +3,3 @@ PKG_LIBS = `$(R_HOME)/bin/Rscript -e "Rcpp:::LdFlags()"` $(LAPACK_LIBS) $(BLAS_L
 # PKG_CXXFLAGS=-fopenmp -g -O0 # For debugging
 
 PKG_CPPFLAGS=$(SHLIB_OPENMP_CXXFLAGS)
-

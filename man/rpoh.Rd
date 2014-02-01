@@ -37,32 +37,36 @@ maxRec = 15, intercept = 26.3415, coefficient = 77.3171, snpnooh, method, maxsnp
   \code{integer} coefficient of fitted model}
   
   \item{snpnooh}{
-  \code{Integer} number of SNPs used to create \emph{oh} matrix (this number must be divided by 1000)}
+  \code{integer} number of SNPs used to create \emph{oh} matrix (this number must be divided by 1000)}
   
 \item{method}{
-  \code{Character} pedigree reconstruction method}
+  \code{character} pedigree reconstruction method}
   
 \item{maxsnpnooh}{
-  \code{numeric} the maximum number of allowing opposinghomozygote in a half-sib family
+  \code{numeric} the maximum number of allowing opposing homozygote in a half-sib family
 }
 }
 
 \details{
 Four methods \emph{simple}, \emph{recombinations}, \emph{calus} and \emph{manual} can be
-utilised to reconstruct the pedigree. The following example shows the arguments require for each method.
+utilized to reconstruct the pedigree. 
+\cr\cr
+The following examples show the arguments require for each method.
 
-pedigree <- rpoh(oh = ohg(genotype), snpNooh = 50, method = "simple")
-pedigree <- rpoh(genotypeMatrix = genotype, oh = ohg(genotype), maxRec = 10 
-, method = "recombinations")
-pedigree <- rpoh(genotypeMatrix = genotype, oh = ohg(genotype),method = "calus")
-pedigree <- rpoh(oh = ohg(genotype), maxsnpnooh = 31662, method = "manual")
+pedigree1 <- rpoh(oh = oh, snpnooh = 732, method = "simple") \cr
+pedigree2 <- rpoh(genotypeMatrix = genotypeChr1, oh = ohg(genotype), maxRec = 10 , method = "recombinations")  \cr
+pedigree3 <- rpoh(genotypeMatrix = genotype, oh = oh, method = "calus") \cr
+pedigree4 <- rpoh(oh = oh, maxsnpnooh = 31662, method = "manual")
+ \cr
 }
 
 \value{
 Returns a data frame with two columns, the first column is animals' ID and the second column is sire identifiers (randomly generated).
 }
 \note{
-Method can be \emph{recombinations} or \emph{simple}. Please refer to vignette for more information.
+Method can be \emph{recombinations}, \emph{simple}, \emph{calus} or \emph{manual}. Please refer to vignette for more information.\cr
+
+The sire genotype should be removed before using this function utilizing  \code{\link{pogc}} function.
 }
 
 

@@ -1,8 +1,8 @@
 \name{map}
 \docType{data}
 \alias{map}
-\title{Example Map File}
-\description{An example map for hsphase.   
+\title{Example of Map File}
+\description{An example of map for hsphase.   
 }
 \usage{
 data(map)

@@ -46,14 +46,6 @@ int ohpFunction(int const * matrix, const int* nrow, const int* ncol, int* resul
 		}
 	}
 
-	/*for (int i = 0; i < *nrow; i++)
-	{
-		for (int j = 0; j < *ncol; j++)
-		{
-			Rprintf("%d", pRowsMat[i][j]);
-		}
-		Rprintf("\n");
-	}*/
 
 	delete[] pRowsMat;
 	delete[] pRowsRes;

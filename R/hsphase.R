@@ -146,7 +146,7 @@ recombinations <- function(blockMatrix)
     if (!is.matrix(blockMatrix)) 
         stop("The inputs must be MATRIX")
     if (length(blockMatrix[blockMatrix != 0 & blockMatrix != 1 & blockMatrix != 2]) > 0) 
-        stop("Inputs must contain only 0 and 3 or 4")
+        stop("Inputs must contain only 0 and 1 or 2")
     mat <- as.numeric(t(blockMatrix))
     nSwitch <- integer(nrow(blockMatrix))
     .C("recombinations", mat = as.integer(mat), nrow = as.integer(nrow(blockMatrix)), ncol = as.integer(ncol(blockMatrix)), 
