@@ -1,4 +1,4 @@
-import("snowfall","Rcpp","RcppArmadillo")
+import("snowfall","Rcpp")
 useDynLib(hsphase)
 export("bmh","imageplot",".hblock","hbp","ssp","aio","phf","pm","rplot","hss","cs","para","recombinations",
 "ohg",".simulateHalfsib","hh",".phfnoGenotype",".prSimple",".rpohhsphase",".fastdist",".prCalus",".maf",

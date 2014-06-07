@@ -1,4 +1,4 @@
-// Copyright (C) 2013 Mohammad H. Ferdosi
+// Copyright (C) 2014 Mohammad H. Ferdosi
 //
 // HSPhase is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -59,7 +59,7 @@ public:
 private:
 	const int *itsNrow_;
 	vector<int> itsHetsite_;
-	const int *itsWindowsWidth_;
+//	const int *itsWindowsWidth_;
 	int *itsValidateMem_;
 	int *itsValidateConst_;
 	int *itsBackwardMemoryMain_;

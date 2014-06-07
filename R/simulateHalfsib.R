@@ -1,4 +1,4 @@
-# Copyright (C) 2013 Cedric Gondro and Mohammad H. Ferdosi  
+# Copyright (C) 2014 Cedric Gondro and Mohammad H. Ferdosi  
 #
 # HSPhase is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

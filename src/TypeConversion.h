@@ -1,3 +1,4 @@
+// Copyright (C) 2014 Mohammad H. Ferdosi
 
 #ifndef TYPECONVERSION_H
 #define	TYPECONVERSION_H

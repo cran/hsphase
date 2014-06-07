@@ -7,14 +7,13 @@ Matrix of Opposing Homozygotes
 Creates a matrix of opposing homozygotes from the genotype matrix.
 }
 \usage{
-ohg(GenotypeMatrix)
+ohg(genotypeMatrix)
 }
 \arguments{
-  \item{GenotypeMatrix}{
+  \item{genotypeMatrix}{
 {\code{matrix} genotype (Data should be numeric. Use 0, 1 and 2 respectively for AA, AB and BB. Use 9 for missing data)
 }
 }
-
 }
 
 
@@ -22,7 +21,12 @@ ohg(GenotypeMatrix)
 Returns a square matrix (sample X sample) with the pairwise counts of opposing homozygotes.
 }
 
-
+\note{
+This function can be slow with a large data set. The fast version of this function will be available after publish of the related manuscript.
+}
+\author{
+Ferdosi, M. H., & Boerner, V. (2014). A fast method for evaluating opposing homozygosity in large SNP data sets. Livestock Science.
+}
 
 \seealso{
  \code{\link{rpoh}}

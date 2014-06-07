@@ -1,4 +1,4 @@
-// Copyright (C) 2013 Mohammad H. Ferdosi
+// Copyright (C) 2014 Mohammad H. Ferdosi
 //
 // HSPhase is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -37,9 +37,9 @@ uint *result, const uint *siregenotype, const uint * str)
 
 	}
 
-	for (int j = 0; j < ((*nrow) / 2); j++)
+	for (uint j = 0; j < ((*nrow) / 2); j++)
 	{
-		for (int i = j * ((*ncol) * 2); i < (j * ((*ncol) * 2) + (*ncol)); i++)
+		for (uint i = j * ((*ncol) * 2); i < (j * ((*ncol) * 2) + (*ncol)); i++)
 		{
 			halfsibStrands[j].strand1.push_back(matrix[i]);
 			halfsibStrands[j].strand2.push_back(matrix[i + (*ncol)]);
@@ -58,7 +58,7 @@ uint *result, const uint *siregenotype, const uint * str)
 
 		blockMaker(sire, halfsibStrands[j], block, ncol);
 
-		for (int i = j * ((*ncol)); i < (j * ((*ncol)) + (*ncol)); i++)
+		for (uint i = j * ((*ncol)); i < (j * ((*ncol)) + (*ncol)); i++)
 		{
 			result[i] = block[i - (j * ((*ncol)))];
 		}

@@ -12,8 +12,8 @@ Identification of recombination events, haplotype reconstruction and sire imputa
 \tabular{ll}{
 Package: \tab hsphase\cr
 Type: \tab Package\cr
-Version: \tab 1.2.6\cr
-Date: \tab 2014-3-1\cr
+Version: \tab 2.0.0\cr
+Date: \tab 2014-6-17\cr
 License: \tab GPL 3 \cr
 }
 \strong{Main Functions:} \cr
@@ -34,16 +34,16 @@ License: \tab GPL 3 \cr
 }
 \author{
 Mohammad H. Ferdosi <mferdosi@une.udu.au>, Cedric Gondro <cgondro2@une.edu.au>
-
 Maintainer: Mohammad H. Ferdosi <mferdosi@myune.udu.au>
 }
 \references{
-Ferdosi, MH, BP Kinghorn, JHJ van der Werf and C Gondro (2013). Effect of genotype and pedigree error on block partitioning, sire imputation and haplotype inference using the hsphase algorithm. In: AAABG; Napier, New Zealand.
+Ferdosi, M. H., Kinghorn, B. P., van der Werf, J. H., & Gondro, C (2013). Effect of genotype and pedigree error on detection of recombination events, sire imputation and haplotype inference using the hsphase algorithm. In Proc. Assoc. Advmt. Anim. Breed. Genet (Vol. 20, pp. 546-549). AAABG; Napier, New Zealand.
 \cr\cr
-Ferdosi, MH, BP Kinghorn, JHJ van der Werf and C Gondro (2014). Detection of recombination events, haplotype reconstruction and imputation of sires using half-sib SNP genotypes. GSE 46:11
+Ferdosi, M. H., Kinghorn, B. P., van der Werf, J. H., & Gondro, C. (2014). Detection of recombination events, haplotype reconstruction and imputation of sires using half-sib SNP genotypes. Genetics, selection, evolution: GSE, 46(1), 11.
 \cr\cr
-Ferdosi, MH, BP Kinghorn, JHJ van der Werf and C Gondro (2014). HSPhase: an R package for detection of recombination events, phasing and imputation of half-sib family groups. under review 
+Ferdosi, M. H., Kinghorn, B. P., van der Werf, J. H., Lee, S. H., & Gondro, C. (2014). hsphase: an R package for pedigree reconstruction, detection of recombination events, phasing and imputation of half-sib family groups. BMC Bioinformatics, 15(1), 172.
 \cr\cr
+Ferdosi, M. H., & Boerner, V. (2014). A fast method for evaluating opposing homozygosity in large SNP data sets. Livestock Science.
 
 }
 
