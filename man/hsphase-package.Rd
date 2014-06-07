@@ -3,7 +3,7 @@
 \alias{hsphase}
 \docType{package}
 \title{
-Phasing, Pedigree Reconstruction, Sire Imputation and Recombination Events for Half-sib Families
+Phasing, Pedigree Reconstruction, Sire Imputation and Recombination Events Identification for Half-sib Families
 }
 \description{
 Identification of recombination events, haplotype reconstruction and sire imputation using half-sib family SNP data.
@@ -12,7 +12,7 @@ Identification of recombination events, haplotype reconstruction and sire imputa
 \tabular{ll}{
 Package: \tab hsphase\cr
 Type: \tab Package\cr
-Version: \tab 2.0.0\cr
+Version: \tab 2.0.1\cr
 Date: \tab 2014-6-17\cr
 License: \tab GPL 3 \cr
 }

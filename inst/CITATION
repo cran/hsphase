@@ -83,8 +83,9 @@ entry = "Article",
         "Livestock Science",
         "Accepted (2014)")
 )
-temp = sessionInfo("hsphase")$otherPkgs$hsphase
-year = temp$Date
+
+year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
+vers <- paste("R package version", meta$Version)
 
 citEntry(
 entry = "Manual",
@@ -95,10 +96,9 @@ events, pedigree and haplotype reconstruction and imputation using SNP data from
 	author = personList(as.person("Mohammad H Ferdosi"),
                    as.person("Cedric Gondro")),
 	year = {year},
-  note = {paste("R package vignette version", temp$Version)},
+  note = {paste("R package vignette version", vers)},
   textVersion  =
   paste("Ferdosi, M. H., Gondro, C. ",
-        "hsphase - an R package for identification of recombination
-events, pedigree and haplotype reconstruction and imputation using SNP data from half-sib
-families (",year,")"," : R package vignette version ", temp$Version,sep="")
+        "hsphase - an R package for identification of recombination events, pedigree and haplotype reconstruction and imputation using SNP data from half-sib
+families (",year,")"," :vignette ", vers,sep="")
 )
