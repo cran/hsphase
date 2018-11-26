@@ -1,5 +1,5 @@
-09a6f158047511ab0bb9f20bfd89f413 *DESCRIPTION
-2603458c2b83f8e0b35eb5e2edcc8be6 *NAMESPACE
+0c3238f4997a284d3eeae6faa053c6a0 *DESCRIPTION
+7ccd2afff7f60d6860ad8d490c53a7b4 *NAMESPACE
 435013b85a95948826b34c78022f300a *R/aio.R
 ef0ae4606e3b7407d2df46de54ac24cf *R/bmh.R
 7ec7593f13298ae5ba000e1e68a23e71 *R/co.R
@@ -25,16 +25,16 @@ d8cc51b192ed3ddfb8e765f35dc185cf *R/prSimple.R
 2d8d916ff425e5a308fcb50de6ecb186 *R/rpohhsphase.R
 c1c7b2d3da1a61a0a201ea31bafecbd7 *R/simulateHalfsib.R
 b793c4a1e8ef57b8f2fddc9ce1829b1d *R/ssp.R
-d50ff61a204390dde700aecbecf6d22b *build/vignette.rds
-168c3c8ce11ecb4ca196ac0978a4953c *data/genotypes.rda
+547a556e33449f3d47a91d24c1ec6817 *build/vignette.rds
+730fe42e6942c88a43bf89ef56ccca96 *data/genotypes.rda
 dcfad65640df58767f04322d094f6a84 *data/map.txt.gz
 6e2adec868a9c37f3b6d2ae26be8ca73 *data/pedigree.txt.gz
 7760e822405e2eded1be3d91e2595490 *demo/00Index
 19b72c690e50b30af50a3decd4c93575 *demo/hsphase.R
 1ea0b2404b2e9ba484582c852bd4522b *inst/CITATION
 bbb1c5781055f42319dfe68d85b99e48 *inst/doc/hsphase.R
-b896622ffcb3a746ebdb122a6184ab23 *inst/doc/hsphase.Rnw
-de884d0d02778ea79c974990676d9827 *inst/doc/hsphase.pdf
+e259b52e5fb8eba0d5a475c9e2096422 *inst/doc/hsphase.Rnw
+5d515c640df8ad76151dc4e45bd93d72 *inst/doc/hsphase.pdf
 6ab99072aa863b653e29315b81d690d3 *man/aio.Rd
 ba4eb55ea0dd80fcc215a02c7d4b38ba *man/bmh.Rd
 422bee2d680123ea3bfe71f3117b6ff5 *man/co.Rd
@@ -65,7 +65,7 @@ a2c14fc1623bfe6bd95d63facb95f7c3 *man/rpoh.Rd
 972fc1ae3e72385d53cff89ce523d13a *src/FastDist.h
 5cd5b87e700bd1b32581b47ba6f8ac89 *src/MAF.cpp
 04b95db8f2e583f56ba24d27e86e6592 *src/MAF.h
-dab28ebafcd31b7dd004cd1ac6efe0f6 *src/Makevars
+54727ef4030ae693216aeb9d91568699 *src/Makevars
 29dd356b4dee1a598a077b2d5f74614e *src/Makevars.win
 0278845eeddb211838c55d6ccaaf7e74 *src/Ohd.cpp
 881d0046b08df14d116addd421e40d2f *src/Ohd.h

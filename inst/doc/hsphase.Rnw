@@ -94,7 +94,7 @@ genotype <- matrix(c(
   2,2,2,2,1,2,2,2,0,0,2,2,2,2,
   2,2,2,2,0,0,0,0,2,2,2,2,2,2,
   0,0,0,0,0,2,2,2,2,2,2,0,0,0
-  ), ncol=14, byrow=T)
+  ), ncol = 14, byrow = TRUE)
   
   AnimalID <- paste("ID-", 1:5, sep="")
   SNPID <- paste("SNP-", letters[1:14], sep="")
@@ -117,7 +117,8 @@ readGenotype(genotypePath, separatorGenotype = " ", check = TRUE)
 
 If the \emph{check} option is set to \emph{TRUE}, the genotype file will be
 checked for possible errors.\\\\
-\emph{Note 1:} The SNP and the animals' IDs should not contain a double quotes.\\
+\emph{Note 1:} The SNP and the animals' IDs should not contain a double
+quotes.\\\\
 \emph{Note 2:} This function uses the \emph{scan} function in R to improve read speeds
 for large genotype files.
 
@@ -222,7 +223,8 @@ position in base pairs. The first line must contain a header with \emph{"Name Ch
 \label{sec: Half-sib Family Separator (hss)}
 The \emph{hss} function generates a list of matrices (ID $\times$ SNP), one for each
 of the half-sib groups that have at least 4 offspring per sire. The input are
-the genotype and pedigree files. The names of the list are the names of the sires in the pedigree file.
+the genotype and pedigree files (path to the file, matrix or data.frame). The names of the list are the names
+of the sires in the pedigree file.
 
 \begin{verbatim}
 halfsib <- hss(pedigree, genotype)
@@ -250,15 +252,15 @@ and runs one of the options below, on each element of the list, in parallel.
 This function requires the \emph{snowfall} package. To run use e.g.:
 
 \begin{verbatim}
-blocks <- para(halfsib, cpus=20, option="bmh", type = "SOCK")
-sireImpute <- para(halfsib, cpus=20, option="ssp", type = "SOCK")
-phasedSibs <- para(halfsib, cpus=20, option="aio", type = "SOCK")
+blocks <- para(halfsib, cpus = 20, option = "bmh", type = "SOCK")
+sireImpute <- para(halfsib, cpus = 20, option = "ssp", type = "SOCK")
+phasedSibs <- para(halfsib, cpus = 20, option = "aio", type = "SOCK")
 \end{verbatim}
 
 \emph{cpus} sets the number of CPUs to use, \emph{option} sets the type of
-analysis and can be any of the above described \emph{bmh}, \emph{ssp} or
-\emph{aio} and also \emph{rec}. The \emph{rec} option returns a list with the
-sum of recombinations between SNP for each chromosome in each half-sib group.
+analysis and can be any of the above described \emph{bmh}, \emph{ssp},
+\emph{aio} or \emph{pm} (\ref{sec: Probability Matrix (pm)}) and also \emph{rec}. The \emph{rec} option returns a
+list with the sum of recombinations between SNP for each chromosome in each half-sib group.
 The parameter \emph{type} sets the type of cluster for parallel analysis (for
 more information refer to the snowfall documentation). The output is a list of
 the same length as the input data and its contents depends on the \emph{option}
@@ -273,7 +275,7 @@ result <- apply(result, 2, sum)
 The \emph{result} can be plotted to visualise the recombinations.
 
 \section{Visualisation}
-\subsection{\emph{Blocking} Structure Plot (imageplot)}
+\subsection{Blocking Structure Plot (imageplot)}
 \label{sec: Function (imageplot)}
 The \emph{imageplot} function creates a plot of the blocking structure 
 created by either \emph{bmh} or \emph{hbp} (Sections \ref{sec: Block Partitioning (bmh)} and \ref{sec: Haplotype Block of Phased Data (hbp)}). White indicates regions of unknown origin, red and blue
@@ -378,7 +380,7 @@ genotype <- matrix(c(
 2,0,1,2,2,
 2,2,1,0,2,
 2,2,1,1,1,
-0,0,2,1,0), ncol=5 ,byrow=T)
+0,0,2,1,0), ncol = 5 ,byrow = T)
 
 (result <- bmh(genotype))
 pm(result)
@@ -398,14 +400,14 @@ result of other phasing algorithms (provided there are parents -- offspring in t
 sire <- matrix(c(
   0,0,0,0,0,1,                  # Haplotype one of the sire
   0,1,1,1,1,0                   # Haplotype two of the sire
-  ), byrow=T, ncol=6)
+  ), byrow = T, ncol = 6)
    
 haplotypeHalfsib <- matrix(c(
   1,0,1,1,1,1,                  # Individual one, haplotype one
   0,1,0,0,0,0,                  # Individual one, haplotype two
   0,1,1,0,1,1,                  # Individual two, haplotype one
   1,0,0,1,0,0                   # Individual two, haplotype two
-  ), byrow=T, ncol=6)             # 0s and 1s are allele A and B
+  ), byrow = T, ncol = 6)       # 0s and 1s are allele A and B
 
 hbp(haplotypeHalfsib, sire)
 
@@ -425,7 +427,7 @@ genotype <- matrix(c(
   2,0,2,2,                    
   0,0,2,2,
   0,2,0,0                     
-  ), byrow=TRUE, ncol=4)      
+  ), byrow = TRUE, ncol = 4)      
   
 recombinations(bmh(genotype))           
 \end{verbatim}
@@ -456,14 +458,11 @@ utilised to reconstruct the pedigree.  For more
 details please refer to -- article.
 
 \begin{verbatim}
-pedigree <- rpoh(oh = ohg(genotype), snpNooh = 50, 
-method = "simple")
-pedigree <- rpoh(genotypeMatrix = genotypeChr1, oh = ohg(genotype), maxRec = 10,
-method = "recombinations")
-pedigree <- rpoh(genotypeMatrix = genotype, oh = ohg(genotype),
-method = "calus")
-pedigree <- rpoh(oh = ohg(genotype), maxsnpnooh = 31662, 
-method = "manual")
+pedigree1 <- rpoh(oh = oh, snpnooh = 732, method = "simple") 
+pedigree2 <- rpoh(genotypeMatrix = genotypeChr1, oh = ohg(genotype), 
+maxRec = 10 , method = "recombinations") 
+pedigree3 <- rpoh(genotypeMatrix = genotype, oh = oh, method = "calus") 
+pedigree4 <- rpoh(oh = oh, maxsnpnooh = 31662, method = "manual")
 \end{verbatim}
 
 \emph{Note 1:} The functions \emph{ohg} and \emph{rpoh} with
@@ -476,17 +475,17 @@ individuals into half-sib groups and can speed up the process.\\
 for \emph{recombinations} method must use only genotypic data from a single
 chromosome.\\
 
-\emph{Note 3:} The \emph{snpNooh} is the number of SNPs (divided by 1000) used
+\emph{Note 3:} The \emph{snpnooh} is the number of SNPs (divided by 1000) used
 to create opposing homozygote matrix.\\
 
 \emph{Note 4:} The \emph{maxsnpnooh} is the maximum number of allowing opposing
-homozygote in a family
+homozygote in a family.
 
 \subsection{Fix Pedigree Errors (pedigreeNaming)}
 The \emph{pedigreeNaming} function tries to link the inferred half-sib family groups to the sire IDs in the original pedigree and fix errors. This works well if the original pedigree is relatively correct
  but individuals will be misassigned if most of the individuals originally allocated to a sire are not its offspring.
 
-\subsection{Parentage Assignment}
+\subsection{Parentage Assignment (pogc)}
 The \emph{pogc} function utilises the opposing homozygote matrix and return
 pedigree of parent-offspring assignments.
 
@@ -545,13 +544,14 @@ halfsib <- hss(pedigree, genotype)
 halfsib <- cs(halfsib, mapPath)   
 
 # Block Partitioning (Section 5 and 3.1)
-recombinationBlocksList <- para(halfsib, cpus=20, option="bmh", type = "SOCK")  
+recombinationBlocksList <- para(halfsib, cpus = 20, option = "bmh", type =
+"SOCK")
 
 # Sire Imputation (Section 5 and 3.2)   
-sireHaplotypeList <- para(halfsib, cpus=20, option="ssp", type = "SOCK") 
+sireHaplotypeList <- para(halfsib, cpus = 20, option = "ssp", type = "SOCK") 
 
 # Half-Sib Family Phasing  (Section 5 and 3.4)
-familyPhasedList <- para(halfsib, cpus=20, option="aio", type = "SOCK") 
+familyPhasedList <- para(halfsib, cpus = 20, option = "aio", type = "SOCK") 
 
 \end{Verbatim}
 
@@ -563,11 +563,11 @@ chromosomeMatch <- function(listHalfsibs, numberChr)
     chr <- list()
     for(i in 1:numberChr)
     {
-        chr[[i]] <- listHalfsibs[grep(paste("_",i,"$",sep=""),names(listHalfsibs))]
+        chr[[i]] <- listHalfsibs[grep(paste("_", i, "$", sep = ""), names(listHalfsibs))]
         chr[[i]] <- do.call(rbind, chr[[i]])
     }
 	
-    phasedGenotype <- do.call(cbind,chr) 
+    phasedGenotype <- do.call(cbind, chr) 
     phasedGenotype
 }
 \end{verbatim}
@@ -576,8 +576,12 @@ The \emph{numberChr} is the number of chromosomes. \\
 
 \emph{Note:} A comprehensive demo and example dataset is available from
 \href{http://www-personal.une.edu.au/~cgondro2/hsphase.htm}{Cedric Gondro's home
-page} or running demo(hsphase). To cite the package please type
-\emph(citation(hsphase)).
+page} or running \emph{demo(hsphase)}. 
 
+\section{How to Cite the hsphase}
+To cite the package please type
+\begin{verbatim}
+citation("hsphase")
+\end{verbatim}
 
 \end{document}
