@@ -21,7 +21,7 @@ imageplot(x, title, rv = FALSE, ...)
   \item{rv}{\code{logical}
 reverse the colour
 }
-  \item{\dots}{
+  \item{\dots}{Can be used to set xLabels and yLabels \link{axis}.
 
 }
 }

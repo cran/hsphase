@@ -47,7 +47,11 @@ Ferdosi, M. H., & Boerner, V. (2014). A fast method for evaluating opposing homo
 
 }
 
-\keyword{block,half-sib,sire inference,phase }
+\concept{block}
+\concept{half-sib}
+\concept{sire inference}
+\concept{phase}
+
 
 \examples{
 genotype <- matrix(c(
