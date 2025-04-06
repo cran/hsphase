@@ -3,10 +3,10 @@ Type: Package
 Title: Phasing, Pedigree Reconstruction, Sire Imputation and
         Recombination Events Identification of Half-sib Families Using
         SNP Data
-Version: 2.0.3
-Date: 2024-02-11
-Author: Mohammad Ferdosi <mhferdosi@yahoo.com>, Cedric Gondro <gondroce@msu.edu>
-Maintainer: Mohammad Ferdosi <mhferdosi@yahoo.com>
+Version: 2.0.4
+Date: 2025-04-05
+Authors@R: c(person("Mohammad", "Ferdosi", email = "mhferdosi@yahoo.com", role = c("aut", "cre")),
+             person("Cedric", "Gondro", email = "gondroce@msu.edu", role = "aut"))
 Depends: snowfall, R (>= 3.1.0)
 LinkingTo: RcppArmadillo (>= 0.4.300.8.0), Rcpp (>= 0.11.2)
 Imports: Rcpp
@@ -14,6 +14,9 @@ Description: Identification of recombination events, haplotype reconstruction, s
 License: GPL-3
 NeedsCompilation: yes
 Repository: CRAN
-Packaged: 2024-02-16 07:45:27 UTC; mhf
-Date/Publication: 2024-02-16 11:40:02 UTC
 RoxygenNote: 7.3.1
+Packaged: 2025-04-05 05:39:03 UTC; mhf
+Author: Mohammad Ferdosi [aut, cre],
+  Cedric Gondro [aut]
+Maintainer: Mohammad Ferdosi <mhferdosi@yahoo.com>
+Date/Publication: 2025-04-06 03:00:02 UTC

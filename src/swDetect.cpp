@@ -41,7 +41,7 @@ swDetect::swDetect(int *R /* = 0 */,  int *nrow /* = 0 */,  int *ncol /* = 0 */)
 
 swDetect::~swDetect()
 {
-    delete pRows;
+    delete[] pRows;
 }
 
 

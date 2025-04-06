@@ -42,7 +42,7 @@ bibentry(
   volume = "166",
   copyright = "2014 Ferdosi et al.",
   issn = "1871-1413",
-  url = "https://www.sciencedirect.com/science/article/abs/pii/S1871141314002625",
+  url = "https://doi.org/10.1016/j.livsci.2014.05.026",
   doi = "10.1186/1297-9686-46-11",
   language = "en",
   number = "1",
