@@ -574,14 +574,10 @@ chromosomeMatch <- function(listHalfsibs, numberChr)
 
 The \emph{numberChr} is the number of chromosomes. \\
 
-\emph{Note:} A comprehensive demo and example dataset is available from
-\href{http://www-personal.une.edu.au/~cgondro2/hsphase.htm}{Cedric Gondro's home
-page} or running \emph{demo(hsphase)}. 
-
 \section{How to Cite the hsphase}
 To cite the package please type
 \begin{verbatim}
 citation("hsphase")
 \end{verbatim}
-
+Note: AI was used to check and develop the documents.
 \end{document}

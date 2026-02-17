@@ -1,42 +1,38 @@
 \name{ssp}
 \alias{ssp}
-\title{
-Sire Imputation and Phasing
-}
+\title{Sire Imputation and Phasing}
 \description{
-Infer (impute) and phase sire's genotype based on the block structure matrix (recombination blocks) and homozygous sites of the half-sib genotype matrix.}
+Infers (imputes) and phases the sire haplotypes based on the block structure matrix and homozygous sites of the half-sib genotype matrix.
+}
 \usage{
 ssp(blockMatrix, genotypeMatrix)
 }
-
 \arguments{
   \item{blockMatrix}{
-\code{matrix} block structure (Output of \code{\link{bmh}})
-}
+    \code{matrix}. Block structure (output of \code{\link{bmh}}).
+  }
   \item{genotypeMatrix}{
-\code{matrix} half-sibs genotype
-(each row includes the SNP of individuals, 0, 1 and 2 for respectively AA, AB and BB. Use 9 for missing data) }
-
+    \code{matrix}. Half-sib genotypes (one individual per row).
+    Genotypes coded as \code{0, 1, 2} for \code{AA, AB, BB}. Use \code{9} for missing data.
+  }
 }
-
 \value{
-Returns a matrix (Imputed Sire) with two rows one for each haplotype of the sire (columns are SNP in the order of the genotype matrix). Alleles are coded as 0 (A) and 1 (B). Alleles that could not be imputed are coded as 9.
+A \code{matrix} with two rows (one per sire haplotype) and columns corresponding to SNPs in genotype order.
+Alleles are coded as \code{0} (A) and \code{1} (B). Alleles that could not be imputed are coded as \code{9}.
 }
-
-
-
 \seealso{
- \code{\link{phf}}, \code{\link{aio}} and \code{\link{imageplot}}
+\code{\link{phf}}, \code{\link{aio}}, \code{\link{imageplot}}
 }
 \examples{
 genotype <- matrix(c(
-0,2,1,1,1,
-2,0,1,2,2,
-2,2,1,0,2,
-2,2,1,1,1,
-0,0,2,1,0), ncol = 5, byrow = TRUE) # each row contains the SNP of individuals
+  0,2,1,1,1,
+  2,0,1,2,2,
+  2,2,1,0,2,
+  2,2,1,1,1,
+  0,0,2,1,0
+), ncol = 5, byrow = TRUE)
 
-(result <- ssp(bmh(genotype), genotype)) 
+ssp(bmh(genotype), genotype)
 }
 \keyword{snp}
 \keyword{halfsib}

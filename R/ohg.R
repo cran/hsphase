@@ -15,10 +15,7 @@
 
 ohg <- function(genotypeMatrix)
 {
-  A <- genotypeMatrix
-  cm <- A - (floor(A/9) * 8)
-  fpart <- floor(cm/2)
-  lPart <- t(round(((cm) - 2)/2))
-  result <- (fpart %*% lPart) * (-1)
+  cm <- genotypeMatrix - (floor(genotypeMatrix/9) * 8)
+  result <- (floor(cm/2) %*%  t(round(((cm) - 2)/2))) * (-1)
   t(result) + result
 }

@@ -9,7 +9,7 @@ This function uses the list of matrices (the output of \code{\link{cs}}) and run
 }
 \usage{
 para(halfsibs, cpus = 1, option = "bmh", type = "SOCK", bmh_forwardVectorSize = 30,
-bmh_excludeFP = TRUE, bmh_nsap = 3, pmMethod = "constant")
+bmh_excludeFP = TRUE, bmh_nsap = 3,  bmh_fillMissing = FALSE,pmMethod = "constant")
 }
 \keyword{opposing-homozygote}
 
@@ -38,6 +38,10 @@ bmh_excludeFP = TRUE, bmh_nsap = 3, pmMethod = "constant")
 
 \item{bmh_nsap}{
   \code{integer} number of SNPs per block}
+
+\item{bmh_fillMissing}{
+  \code{logical} Because the exact point of the recombinations is unknown, the markers around the recombination points are considered missing. By setting this argument to true, the recombination point is assumed to be in the middle unknown point, so no missing SNPs at the recombination point would be considered.}
+
 
 \item{pmMethod}{
   \code{character} method for creating the recombination matrix}

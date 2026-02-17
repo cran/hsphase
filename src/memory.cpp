@@ -42,14 +42,6 @@ memoryCLS::~memoryCLS()
 	delete[] pValidity;
 }
 
-int memoryCLS::freeMemory()
-{
-	delete[] pMemory;
-	delete[] pPreviousMemory;
-	delete[] pValidity;
-	return (0);
-}
-
 int memoryCLS::memoryMaker(int* col)
 {
 	for (int i = 0; i < *pRows; i++)

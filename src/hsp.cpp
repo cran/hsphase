@@ -13,7 +13,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
 /*
  * File:   hsp.cpp
  * Author: Mohammad H. Ferdosi
@@ -71,8 +70,7 @@ int reverseConvert(int *col, const int *nrow)
  * @param MaxBlock
  * @return convert 3 to 1 and 4 to 2 and the rest to 0 (1 and 2 are strand A and B of sire)
  */
-int c2rBlocks(int const * matrix, int *nrow, int *ncol, int* result,
-		int* MaxBlock)
+int c2rBlocks(int const * matrix, int *nrow, int *ncol, int* result, int* MaxBlock)
 {
 
 	c2rBlocks2(matrix, nrow, ncol, result);
@@ -177,7 +175,6 @@ int memMaker(int *lastMemory, int* newCol, int *nrow)
 
 }
 
-
 int strandOrigin(int *col, int *nrow)
 {
 	for (int i = 0; i < *nrow; i++)
@@ -209,8 +206,7 @@ int switchDetector(int *Memory, int *tempCol2, int *nrow)
 	int sw = 0;
 	for (int i = 0; i < *nrow; i++)
 	{
-		if ((*(Memory + i) == 3 || *(Memory + i) == 4)
-				&& (*(tempCol2 + i) == 3 || *(tempCol2 + i) == 4))
+		if ((*(Memory + i) == 3 || *(Memory + i) == 4) && (*(tempCol2 + i) == 3 || *(tempCol2 + i) == 4))
 		{
 			if (*(Memory + i) != *(tempCol2 + i))
 				sw = sw + 1;
@@ -225,8 +221,7 @@ int switchDetector(int *Memory, int *tempCol2, const int *nrow)
 	int sw = 0;
 	for (int i = 0; i < *nrow; i++)
 	{
-		if ((*(Memory + i) == 3 || *(Memory + i) == 4)
-				&& (*(tempCol2 + i) == 3 || *(tempCol2 + i) == 4))
+		if ((*(Memory + i) == 3 || *(Memory + i) == 4) && (*(tempCol2 + i) == 3 || *(tempCol2 + i) == 4))
 		{
 			if (*(Memory + i) != *(tempCol2 + i))
 				sw = sw + 1;
@@ -236,7 +231,6 @@ int switchDetector(int *Memory, int *tempCol2, const int *nrow)
 	return (sw);
 }
 
-
 int switchDetector(int *Memory, int *tempCol2, vector<int> &switches, int *nrow)
 {
 	switches.clear();
@@ -244,8 +238,7 @@ int switchDetector(int *Memory, int *tempCol2, vector<int> &switches, int *nrow)
 
 	for (int i = 0; i < *nrow; i++)
 	{
-		if ((*(Memory + i) == 3 || *(Memory + i) == 4)
-				&& (*(tempCol2 + i) == 3 || *(tempCol2 + i) == 4))
+		if ((*(Memory + i) == 3 || *(Memory + i) == 4) && (*(tempCol2 + i) == 3 || *(tempCol2 + i) == 4))
 		{
 			if (*(Memory + i) != *(tempCol2 + i))
 			{
@@ -257,15 +250,13 @@ int switchDetector(int *Memory, int *tempCol2, vector<int> &switches, int *nrow)
 	return (0);
 }
 
-int switchDetector(int *Memory, int *tempCol2, vector<int> &switches,
-		const int *nrow)
+int switchDetector(int *Memory, int *tempCol2, vector<int> &switches, const int *nrow)
 {
 	switches.clear();
 	switches.reserve(*nrow);
 	for (int i = 0; i < *nrow; i++)
 	{
-		if ((*(Memory + i) == 3 || *(Memory + i) == 4)
-				&& (*(tempCol2 + i) == 3 || *(tempCol2 + i) == 4))
+		if ((*(Memory + i) == 3 || *(Memory + i) == 4) && (*(tempCol2 + i) == 3 || *(tempCol2 + i) == 4))
 		{
 			if (*(Memory + i) != *(tempCol2 + i))
 			{
@@ -276,8 +267,7 @@ int switchDetector(int *Memory, int *tempCol2, vector<int> &switches,
 
 	return (0);
 }
-int c2rStrandF(const int* matBlock, const int* matGenotype, const int* nrow,
-		const int* ncol, double* result)
+int c2rStrandF(const int* matBlock, const int* matGenotype, const int* nrow, const int* ncol, double* result)
 {
 
 	//
@@ -326,19 +316,16 @@ int c2rStrandF(const int* matBlock, const int* matGenotype, const int* nrow,
 
 		vector<int>::iterator iElement;
 		double block11 = 0, block12 = 0, block21 = 0, block22 = 0;
-		for (iElement = firstAllele.begin(); iElement != firstAllele.end();
-				++iElement)
+		for (iElement = firstAllele.begin(); iElement != firstAllele.end(); ++iElement)
 		{
-			if (*(*(pRowsBolck + k) + *iElement) == 1
-					&& *(*(pRowsGen + k) + *iElement) != 1)
+			if (*(*(pRowsBolck + k) + *iElement) == 1 && *(*(pRowsGen + k) + *iElement) != 1)
 			{
 				if (*(*(pRowsGen + k) + *iElement) == 0)
 					block11 = block11 + 1;
 				if (*(*(pRowsGen + k) + *iElement) == 2)
 					block12 = block12 + 1;
 			}
-			if (*(*(pRowsBolck + k) + *iElement) == 2
-					&& *(*(pRowsGen + k) + *iElement) != 1)
+			if (*(*(pRowsBolck + k) + *iElement) == 2 && *(*(pRowsGen + k) + *iElement) != 1)
 			{
 				if (*(*(pRowsGen + k) + *iElement) == 0)
 					block21 = block21 + 1;
@@ -347,10 +334,8 @@ int c2rStrandF(const int* matBlock, const int* matGenotype, const int* nrow,
 			}
 		}
 
-		tempSumStrand1 = floor(
-				((double) ((block12) / (block11 + block12))) + .5);
-		tempSumStrand2 = floor(
-				((double) ((block22) / (block21 + block22))) + .5);
+		tempSumStrand1 = floor(((double) ((block12) / (block11 + block12))) + .5);
+		tempSumStrand2 = floor(((double) ((block22) / (block21 + block22))) + .5);
 
 		if ((block11 + block12) == 0 || (block21 + block22) == 0)
 		{
@@ -374,8 +359,7 @@ int c2rStrandF(const int* matBlock, const int* matGenotype, const int* nrow,
 	return (0);
 }
 
-int frequencyVector(vector<int>::iterator strat, int seachNumber,
-		vector<int>::iterator end)
+int frequencyVector(vector<int>::iterator strat, int seachNumber, vector<int>::iterator end)
 {
 	int frq = 0;
 	vector<int>::iterator iElement;
@@ -388,8 +372,7 @@ int frequencyVector(vector<int>::iterator strat, int seachNumber,
 	return (frq);
 }
 
-int phaseFunction(int const * genotypeMat, int const *nrow, int const *ncol,
-		int const* blockMat, int const* sirePhasedMat, int* result)
+int phaseFunction(int const * genotypeMat, int const *nrow, int const *ncol, int const* blockMat, int const* sirePhasedMat, int* result)
 {
 	for (int i = 0; i < (*ncol) * (*nrow); i++)
 	{
@@ -461,14 +444,12 @@ int phaseFunction(int const * genotypeMat, int const *nrow, int const *ncol,
 	return (0);
 }
 
-int  phaseFunctionNoGenotype(int const *nrow, int const *ncol,
-		int const* blockMat, int const* sirePhasedMat, int* result)
+int phaseFunctionNoGenotype(int const *nrow, int const *ncol, int const* blockMat, int const* sirePhasedMat, int* result)
 {
 	for (int i = 0; i < (*ncol) * (*nrow); i++)
 	{
 		result[i] = 9;
 	}
-
 
 	int const**pBlockMat = new int const*[*ncol];
 
@@ -506,7 +487,6 @@ int  phaseFunctionNoGenotype(int const *nrow, int const *ncol,
 
 		}
 	}
-
 
 	delete[] pBlockMat;
 	delete[] pSirePhasedMat;
@@ -565,14 +545,12 @@ int c2rRecombinations(const uint* matrix, const uint* nrow, const uint* ncol, co
 
 	return (0);
 }
-int recombinationFun(int const *matrix, int const * nrow, int const * ncol,
-		int * result)
+int recombinationFun(int const *matrix, int const * nrow, int const * ncol, int * result)
 {
 	for (int i = 0; i < (*nrow); i++)
 	{
 		result[i] = 9;
 	}
-
 
 	//for genotype
 	int const**blockMat = new int const*[*nrow];
@@ -588,7 +566,7 @@ int recombinationFun(int const *matrix, int const * nrow, int const * ncol,
 	{
 		for (int j = 0; j < *ncol - 1; j++)
 		{
-			if (blockMat[i][j] != blockMat[i][j+1] && blockMat[i][j] != 0)
+			if (blockMat[i][j] != blockMat[i][j + 1] && blockMat[i][j] != 0)
 			{
 				n = n + 1;
 			}

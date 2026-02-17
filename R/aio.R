@@ -13,9 +13,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http:#www.gnu.org/licenses/>.
 
-aio <- function(genotypeMatrix, bmh_forwardVectorSize = 30, bmh_excludeFP = TRUE, bmh_nsap = 3, output = "phase")
+aio <- function(genotypeMatrix, bmh_forwardVectorSize = 30, bmh_excludeFP = TRUE, bmh_nsap = 3, bmh_fillMissing  = FALSE, output = "phase")
 {
-    block <- bmh(genotypeMatrix, forwardVectorSize = bmh_forwardVectorSize, excludeFP = bmh_excludeFP, nsap = bmh_nsap)
+    block <- bmh(genotypeMatrix, forwardVectorSize = bmh_forwardVectorSize, excludeFP = bmh_excludeFP, nsap = bmh_nsap, fillMissing = bmh_fillMissing)
     id <- rownames(genotypeMatrix)
     id1 <- paste(id, "p", sep = "")
     id2 <- paste(id, "m", sep = "")

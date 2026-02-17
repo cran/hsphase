@@ -1,43 +1,28 @@
-% 
-% TODO: Write Documentation 
-% 
-
 \name{co}
 \alias{co}
-\docType{package}
-\title{
-Crossover Detection}
+\title{Crossover Detection}
 \description{
-Detect all possible crossover events.}
+Detects possible crossover segments by comparing pairs of individuals in a half-sib family.
+}
 \usage{
 co(genotypeMatrix)
 }
 \arguments{
   \item{genotypeMatrix}{
-{\code{matrix} half-sib genotypes  (one half-sib per row, with SNP ordered by mapping position in the columns. Data should be numeric. Use 0, 1 and 2 for respectively AA, AB and BB. Use 9 for missing data)
+    \code{matrix}. Half-sib genotypes (one individual per row; SNPs in columns ordered by map position).
+    Genotypes must be numeric: \code{0, 1, 2} for \code{AA, AB, BB} and \code{9} for missing.
+  }
 }
-
-}
-}
-
 \value{
-Returns a matrix with the number of crossover events for each site.
+A \code{matrix} Returns a matrix with the number of crossover events for each site.
 }
-
-
 \examples{
-genotype <- matrix(c(           # Define a Half-sib Genotype Matrix
-  2,1,0,                        # Individual 1
-  2,0,2,                        # Individual 2
-  0,0,2                         # Individual 3
-  ), byrow = TRUE, ncol = 3)    # There are 3 individuals with three SNPs
-  
-co(genotype)               
+genotype <- matrix(c(
+  2,1,0,
+  2,0,2,
+  0,0,2
+), byrow = TRUE, ncol = 3)
 
+co(genotype)
 }
-
 \keyword{crossover}
-
-
-
-

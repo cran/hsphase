@@ -28,6 +28,7 @@
 #include "swDetect.h"
 #include "TypeConversion.h"
 #include "diag.h"
+#include "FillGap.h"
 
 using namespace std;
 
@@ -50,6 +51,17 @@ void hblock(int* matrix, int *nrow, int *ncol, int* result, int* MaxBlock)
 {
 
 	c2rBlocks(matrix, nrow, ncol, result, MaxBlock);
+
+}
+}
+
+extern "C"
+{
+
+void fillGap(int* vector, int *length, int* result)
+{
+
+	fillGapFunction(vector, length, result);
 
 }
 }

@@ -21,7 +21,7 @@ cs <- function(halfsib, mapPath, separator = " ")
   if(is.data.frame(mapPath))
     map <- mapPath
   else
-    map <- as.matrix(read.table(mapPath, sep = separator, header = T,check.names=F))
+    map <- as.matrix(utils::read.table(mapPath, sep = separator, header = T,check.names=F))
   if (ncol(map) != 3)
   {
     stop("The map file must contain 3 columns and separated with space")

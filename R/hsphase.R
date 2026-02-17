@@ -12,8 +12,60 @@
 
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http:#www.gnu.org/licenses/>.
+#' Fill gaps in a paternal strand vector (native routine wrapper)
 
 
+#'
+#' Internal wrapper around the native C routine \code{fillGap}. It fills
+#' zero-valued gaps in a paternal-strand vector by propagating values from
+#' neighbouring non-zero positions (see native implementation for exact rules).
+#'
+#' @param paternalStrandBMH An integer (or numeric) vector representing the
+#'   paternal strand state (e.g., output from block-building routines). The
+#'   vector is coerced to integer before calling native code.
+#'
+#' @return An integer vector of the same length as \code{paternalStrandBMH}
+#'   containing the gap-filled strand values.
+#'
+#' @details
+#' This function calls compiled code via \code{\link[base]{.C}}:
+#' \code{.C("fillGap", ...)}.
+#'
+#' @seealso \code{\link[base]{.C}}
+#'
+#' @author mhf
+#'
+#' @keywords internal
+.fillGap <- function(paternalStrandBMH)
+{
+	if(!is.vector(paternalStrandBMH))
+		stop("paternalStrandBMH should be a VECTOR")
+	fvec <- numeric(length(paternalStrandBMH))
+	result <- .C("fillGap",as.integer(paternalStrandBMH), length(paternalStrandBMH), result = as.integer(fvec))$result
+	result
+}
+
+
+#' Build haplotype blocks from a BMH result matrix (native routine wrapper)
+#'
+#' Internal wrapper around the native C routine \code{hblock}. It transforms a
+#' BMH result matrix into a block representation, with an optional maximum block
+#' size constraint.
+#'
+#' @param bmhResult A numeric/integer matrix containing BMH results (block
+#'   matching/haplotype-block intermediate output). Must be a matrix.
+#' @param MaxBlock Integer scalar. Maximum block size (default: 400).
+#'
+#' @return A matrix (same general shape as \code{bmhResult}) containing inferred
+#'   block structure. Row and column names are propagated from \code{bmhResult}
+#'   where available.
+#'
+#' @details
+#' This function transposes and flattens \code{bmhResult} before passing it to
+#' compiled code via \code{\link[base]{.C}}:
+#' \code{.C("hblock", ...)}.
+#'
+#'
 .hblock <- function(bmhResult, MaxBlock = 400)
 {
     if (!is.matrix(bmhResult)) 
@@ -100,6 +152,46 @@ phf <- function(GenotypeMatrix, blockMatrix, sirePhasedMatrix)
    colnames(result) <- colnames(GenotypeMatrix)
    result
 }
+#' Phase half-sib paternal haplotype using blocks and sire haplotypes (no offspring genotype needed)
+#'
+#' Internal helper that constructs a half-sib paternal haplotype matrix using:
+#' \itemize{
+#'   \item a block/strand-of-origin matrix (typically produced by \code{\link{bmh}})
+#'   \item a 2-row phased sire haplotype matrix (typically produced by \code{\link{ssp}})
+#' }
+#'
+#' For each marker (column) and individual (row), if the block code is:
+#' \itemize{
+#'   \item `1`: assign sire haplotype row 1 allele at that marker
+#'   \item `2`: assign sire haplotype row 2 allele at that marker
+#'   \item `0`: leave as missing (`9`)
+#' }
+#'
+#' This function calls a native C routine (\code{phaseNogenotype}) via
+#' \code{.C()}.
+#'
+#' @param blockMatrix An integer/numeric matrix of block assignments with
+#' individuals in rows and markers in columns. Must contain only `0`, `1`, and `2`,
+#' where `0` indicates unknown origin.
+#'
+#' @param sirePhasedMatrix An integer/numeric matrix with **two rows** (the sire
+#' haplotypes) and the same number of columns as \code{blockMatrix}. Must contain
+#' only `0`, `1`, and `9` (where `9` indicates missing).
+#'
+#' @return An integer matrix with the same dimensions as \code{blockMatrix},
+#' containing the inferred paternal haplotype allele for each individual and
+#' marker. Values are `0`/`1` for alleles and `9` for missing/unknown (e.g. where
+#' \code{blockMatrix} is `0`).
+#'
+#' @details
+#' The underlying C implementation initializes the entire result matrix to `9`
+#' and then fills entries according to \code{blockMatrix}:
+#' \itemize{
+#'   \item if \code{blockMatrix[j,i] == 1}, then \code{result[j,i] = sirePhasedMatrix[1,i]}
+#'   \item if \code{blockMatrix[j,i] == 2}, then \code{result[j,i] = sirePhasedMatrix[2,i]}
+#' }
+#'
+#' @keywords internal
 .phfnoGenotype <- function(blockMatrix, sirePhasedMatrix)
 {
 		

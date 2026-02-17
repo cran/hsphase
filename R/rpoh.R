@@ -31,7 +31,7 @@ rpoh <- function(genotypeMatrix, oh, forwardVectorSize = 30,excludeFP = TRUE,nsa
 		{
 			print("Default values will be used for identification of recombinations")
 		}
-		result <- .rpohhsphase(genotypeMatrix = genotypeMatrix,oh = oh,forwardVectorSize = forwardVectorSize,excludeFP = excludeFP,nsap = nsap, maxRec = maxRec)	
+		result <- hsphase::.rpohhsphase(genotypeMatrix = genotypeMatrix,oh = oh,forwardVectorSize = forwardVectorSize,excludeFP = excludeFP,nsap = nsap, maxRec = maxRec)	
 	}
 	if(method == 2)
 	{
@@ -40,15 +40,15 @@ rpoh <- function(genotypeMatrix, oh, forwardVectorSize = 30,excludeFP = TRUE,nsa
 			print("Default values will be use for caculation of maximum possible recombinations")
 			print(paste(snpnooh * 1000, "SNPs were used to create the oh matrix"))
 		}
-		result <- .prSimple(oh, snpnooh, intercept = intercept, coefficient = coefficient) 	
+		result <- hsphase::.prSimple(oh, snpnooh, intercept = intercept, coefficient = coefficient) 	
 	}
 	if(method == 3)
 	{
-		result <- .prCalus(oh, genotypeMatrix)
+		result <- hsphase::.prCalus(oh, genotypeMatrix)
 	}
 	if(method == 4)
 	{
-		result <- .prManual(oh, maxsnpnooh)
+		result <- hsphase::.prManual(oh, maxsnpnooh)
 	}
 	result[,2] <- as.factor(result[,2])
 	levels(result[,2]) <- 1:length(levels(result[,2]))

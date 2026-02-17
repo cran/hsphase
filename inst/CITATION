@@ -1,69 +1,106 @@
-citHeader("To cite the 'hsphase' package in publications use:")
+citHeader("To cite the 'hsphase' package in publications, please use:")
 
 bibentry(
-  "Article",
-  title = "hsphase: an R package for pedigree reconstruction, detection of recombination events, phasing and imputation of half-sib family groups",
-  volume = "15",
-  copyright = "http://creativecommons.org/licenses/by/2.0/",
-  issn = "1471-2105",
-  shorttitle = "hsphase",
-  url = "https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-15-172",
-  doi = "10.1186/1471-2105-15-172",
-  language = "en",
-  number = "1",
+  bibtype = "Article",
+  title   = "hsphase: an R package for pedigree reconstruction, detection of recombination events, phasing and imputation of half-sib family groups",
+  author  = c(
+    person(given = "Mohammad H.",  family = "Ferdosi"),
+    person(given = "Brian P.",     family = "Kinghorn"),
+    person(given = "Julius H. J.", family = "van der Werf"),
+    person(given = "Seung Hwan",   family = "Lee"),
+    person(given = "Cedric",       family = "Gondro")
+  ),
   journal = "BMC Bioinformatics",
-  author = c("Mohammad H Ferdosi", "Brian P Kinghorn", "Julius HJ van der Werf", "Seung Hwan Lee", "Cedric Gondro"),
-  month = "jun",
-  year = "2014",
-  pages = "172"
+  year    = "2014",
+  volume  = "15",
+  number  = "1",
+  pages   = "172",
+  doi     = "10.1186/1471-2105-15-172",
+  url     = "https://link.springer.com/article/10.1186/1471-2105-15-172",
+  textVersion =
+    paste(
+      "Ferdosi, M. H., Kinghorn, B. P., van der Werf, J. H. J., Lee, S. H., & Gondro, C. (2014).",
+      "hsphase: an R package for pedigree reconstruction, detection of recombination events, phasing and imputation of half-sib family groups.",
+      "BMC Bioinformatics, 15(1), 172. doi:10.1186/1471-2105-15-172"
+    )
 )
 
 bibentry(
-  "Article",
-  title = "Detection of recombination events, haplotype reconstruction and imputation of sires using half-sib SNP genotypes",
-  volume = "46",
-  copyright = "2014 Ferdosi et al.; licensee BioMed Central Ltd.",
-  issn = "1297-9686",
-  url = "https://gsejournal.biomedcentral.com/articles/10.1186/1297-9686-46-11",
-  doi = "10.1186/1297-9686-46-11",
-  language = "en",
-  number = "1",
+  bibtype = "Article",
+  title   = "Detection of recombination events, haplotype reconstruction and imputation of sires using half-sib SNP genotypes",
+  author  = c(
+    person(given = "Mohammad H.",  family = "Ferdosi"),
+    person(given = "Brian P.",     family = "Kinghorn"),
+    person(given = "Julius H. J.", family = "van der Werf"),
+    person(given = "Cedric",       family = "Gondro")
+  ),
   journal = "Genetics Selection Evolution",
-  author = c("Mohammad H Ferdosi", "Brian P Kinghorn", "Julius HJ van der Werf", "Cedric Gondro"),
-  month = "feb",
-  year = "2014",
-  note = "PMID: 24495596",
-  pages = "11"
+  year    = "2014",
+  volume  = "46",
+  number  = "1",
+  pages   = "11",
+  doi     = "10.1186/1297-9686-46-11",
+  url     = "https://link.springer.com/article/10.1186/1297-9686-46-11",
+  note    = "PMID: 24495596",
+  textVersion =
+    paste(
+      "Ferdosi, M. H., Kinghorn, B. P., van der Werf, J. H. J., & Gondro, C. (2014).",
+      "Detection of recombination events, haplotype reconstruction and imputation of sires using half-sib SNP genotypes.",
+      "Genetics Selection Evolution, 46(1), 11. doi:10.1186/1297-9686-46-11"
+    )
 )
-
 bibentry(
-  "Article",
-  title = "A fast method for evaluating opposing homozygosity in large SNP data sets.",
-  volume = "166",
-  copyright = "2014 Ferdosi et al.",
-  issn = "1871-1413",
-  url = "https://doi.org/10.1016/j.livsci.2014.05.026",
-  doi = "10.1186/1297-9686-46-11",
-  language = "en",
-  number = "1",
+  bibtype = "Article",
+  title   = "A fast method for evaluating opposing homozygosity in large SNP data sets",
+  author  = c(
+    person(given = "Mohammad H.", family = "Ferdosi"),
+    person(given = "Vinzent",    family = "Boerner")
+  ),
   journal = "Livestock Science",
-  author = c("Mohammad H Ferdosi", "Vinzent Boerner"),
-  month = "feb",
-  year = "2014",
-  note = "PMID: 24495596",
-  pages = "35-37",
-  doi = "https://doi.org/10.1016/j.livsci.2014.05.026"
+  year    = "2014",
+  volume  = "166",
+  pages   = "35-37",
+  note    = "Genomics Applied to Livestock Production",
+  doi     = "10.1016/j.livsci.2014.05.026",
+  textVersion =
+    paste(
+      "Ferdosi, M. H., & Boerner, V. (2014).",
+      "A fast method for evaluating opposing homozygosity in large SNP data sets.",
+      "Livestock Science, 166, 35-37. doi:10.1016/j.livsci.2014.05.026"
+    )
 )
-
-
-year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
-vers <- paste("R package version", meta$Version)
 
 bibentry(
-  "Manual",
-  title = "hsphase -- an R package for identification of recombination events, pedigree and haplotype reconstruction and imputation using SNP data from half-sib families",
-  author = c("Mohammad H Ferdosi", "Cedric Gondro"),
-  year = year,
-  note = paste("R package vignette version", vers)
+  bibtype = "Article",
+  title   = "Proc. Assoc. Advmt. Anim. Breed. Genet.",
+  author  = c(
+    person(given = "Shweta",       family = "Sahoo"),
+    person(given = "Mohammad H.",  family = "Ferdosi"),
+    person(given = "Julius H. J.", family = "van der Werf"),
+    person(given = "Sara",         family = "de las Heras-Saldana")
+  ),
+  journal = "Proc. Assoc. Advmt. Anim. Breed. Genet.",
+  year    = "2025",
+  volume  = "26",
+  pages   = "323",
+  textVersion =
+    paste(
+      "Sahoo, S., Ferdosi, M. H., van der Werf, J. H. J., and de las Heras-Saldana, S., et al. (2025).",
+      "Proc. Assoc. Advmt. Anim. Breed. Genet., 26, 323."
+    )
 )
 
+bibentry(
+  bibtype = "Manual",
+  title   = "hsphase: Phasing, pedigree reconstruction, sire imputation and recombination events for half-sib families",
+  author  = c(
+    person(given = "Mohammad H.", family = "Ferdosi"),
+    person(given = "Cedric",     family = "Gondro")
+  ),
+  year    = "2014",
+  textVersion =
+    paste(
+      "Ferdosi, M. H., & Gondro, C. (2014).",
+      "hsphase: Phasing, pedigree reconstruction, sire imputation and recombination events for half-sib families."
+    )
+)

@@ -2,25 +2,22 @@
 % Please edit documentation in R/maf.R
 \name{.maf}
 \alias{.maf}
-\title{Calculate Minor Allele Frequency (MAF)}
+\title{Calculate minor allele frequency (MAF)}
 \usage{
 .maf(snp)
 }
 \arguments{
-\item{snp}{A numeric vector representing the genotype of individuals for a single SNP. 
-The genotype should be coded as 0 for AA, 1 for AB, and 2 for BB. Use 9 to represent missing data.}
+\item{snp}{A numeric vector of genotypes for one SNP. Values must be 0, 1, 2,
+or 9 (missing).}
 }
 \value{
-A numeric value representing the minor allele frequency (MAF) for the SNP data provided.
+A single numeric value: the minor allele frequency (MAF).
 }
 \description{
-This function calculates the minor allele frequency (MAF) for a given single nucleotide polymorphism (SNP) data. 
-The SNP data should be coded numerically: 0 for homozygous for the first allele (AA), 
-1 for heterozygous (AB), and 2 for homozygous for the second allele (BB). Missing data should be coded as 9.
+Calculates the minor allele frequency (MAF) for a single SNP coded as:
+0 = AA, 1 = AB, 2 = BB, and 9 = missing.
 }
 \examples{
 snp_data <- c(0, 0, 1, 2, 2, 9)
-maf_value <- .maf(snp_data)
-print(maf_value)
-
+.maf(snp_data)
 }

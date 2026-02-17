@@ -1,3 +1,17 @@
+# Copyright (C) 2014 Mohammad H. Ferdosi
+#
+# HSPhase is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# HSPhase program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http:#www.gnu.org/licenses/>.
 readGenotype <- function(genotypePath, separatorGenotype = " ", check = TRUE)
 {
 	debut <- proc.time()
@@ -42,7 +56,7 @@ readGenotype <- function(genotypePath, separatorGenotype = " ", check = TRUE)
 	genotype
 }
 
-hss <- function(pedigree, genotype, check = TRUE)
+hss <- function(pedigree, genotype, minHS = 4, check = TRUE)
 {
 	debut <- proc.time()
 	
@@ -90,7 +104,7 @@ hss <- function(pedigree, genotype, check = TRUE)
 		halfsib[[i]] <- na.omit(halfsib[[i]])
 		ncols[i] <- ncol(halfsib[[i]])
 	}
-	halfsib[lapply(halfsib, nrow) < 4 | lapply(halfsib, ncol) < 100] <- NULL
+	halfsib[lapply(halfsib, nrow) < minHS | lapply(halfsib, ncol) < 100] <- NULL
 	print(paste("There are", length(halfsib), "half-sib groups"))
 	print(proc.time() - debut)
 	print("Finished!")

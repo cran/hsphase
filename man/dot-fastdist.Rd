@@ -12,21 +12,19 @@ represents a marker. Genotypes should be coded as 0 for AA, 1 for AB, and 2 for 
 with 9 representing missing data.}
 }
 \value{
-Returns a symmetric matrix of distances between the genotypes specified in the 
+Returns a symmetric matrix of distances (canberra) between the genotypes specified in the 
 `GenotypeMatrix`. Row and column names of the returned matrix correspond to the row names 
 of the `GenotypeMatrix`.
 }
 \description{
-Calculates a symmetric matrix of distances between genotypes, based on a given genotype matrix.
+Calculates a symmetric matrix of distances (canberra) between genotypes, based on a given genotype matrix.
 Each row in the `GenotypeMatrix` represents a genotype, and each column represents a marker.
-The genotype is coded as 0 for AA, 1 for AB, and 2 for BB. Use 9 to represent missing data.
 }
 \examples{
 # Simulate genotype data for 40 individuals across 1000 SNPs
-# genotypes <- simulateHalfsib(numInd = 40, numSNP = 1000, recbound = 0:6, type = "genotype")
+genotypes <- .simulateHalfsib(numInd = 5, numSNP = 1000, recbound = 0:6, type = "genotype")
 # Calculate the distance matrix
-# dist_matrix <- fastdist(genotypes)
-# Display the distance matrix
-# print(dist_matrix)
+dist_matrix <- hsphase::.fastdist(genotypes)
+print(dist_matrix)
 
 }

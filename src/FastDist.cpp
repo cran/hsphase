@@ -44,7 +44,7 @@ int dist(int const * matrix, const int* nrow, const int* ncol, int* result)
 	}
 
 	int frq = 0;
-#pragma omp parallel for private(frq)  schedule(dynamic)  num_threads(2)
+#pragma omp parallel for private(frq)  schedule(dynamic)
 	for (int i = 0; i < *nrow; i++)
 	{
 		for (int j = i; j < *nrow; j++)

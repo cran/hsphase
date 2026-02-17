@@ -7,7 +7,7 @@ Half-sib Family Splitter}
 Splits the dataset into half-sib family groups based on a pedigree.
 }
 \usage{
-hss(pedigree, genotype, check = TRUE)
+hss(pedigree, genotype, minHS = 4, check = TRUE)
 }
 
 \arguments{
@@ -18,7 +18,9 @@ and the second column with the sires IDs
   \item{genotype}{
 \code{matrix} genotype matrix with SNP ordered by mapping position in the columns. Data should be numeric. Use 0, 1 and 2 respectively for AA, AB and BB. Use 9 for missing data
 } 
-
+\item{minHS}{
+\code{integer}Minimum number of offspring in a half-sib family
+}
 
 \item{check}{
 \code{logical} check the genotype file for the possible errors

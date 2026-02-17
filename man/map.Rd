@@ -1,20 +1,20 @@
 \name{map}
 \docType{data}
 \alias{map}
-\title{Example Map File for Genetic Data}
+\title{Example Map File}
 \description{
-  This data set is an example of a map file used within the \code{hsphase} package to demonstrate the mapping of SNPs to their respective locations on chromosomes. 
+An example map dataset for the \pkg{hsphase} package.
 }
 \usage{
 data(map)
 }
 \format{
-  The data set is formatted as a data frame with the following columns, providing essential information about each SNP:
-  \itemize{
-    \item \strong{Name:} The unique identifier or name of the SNP.
-    \item \strong{Chr:} The chromosome on which the SNP is located.
-    \item \strong{Position:} The position of the SNP on the chromosome, expressed in base pairs.
-  }
+A \code{data.frame} with the following columns:
+\describe{
+  \item{Name}{SNP identifier}
+  \item{Chr}{Chromosome}
+  \item{Position}{SNP position in base pairs}
 }
+}
+\references{Sahoo S., Ferdosi M.H., van der Werf J.H.J., and de las Heras-Saldana S., et al. (2025) \emph{Proc. Assoc. Advmt. Anim. Breed. Genet}. 26: 323}
 \keyword{datasets}
-

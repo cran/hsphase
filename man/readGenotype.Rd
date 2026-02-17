@@ -1,45 +1,30 @@
-% 
-% TODO: Write Documentation 
-% 
-
 \name{readGenotype}
 \alias{readGenotype}
-
-\title{
-Read and Check the Genotype File}
+\title{Read and Check the Genotype File}
 \description{
-This function reads and checks genotype files.
+Reads a genotype file and optionally checks it for common formatting/data issues.
 }
 \usage{
 readGenotype(genotypePath, separatorGenotype = " ", check = TRUE)
 }
-
 \arguments{
-
   \item{genotypePath}{
-\code{character} genotype path (animals (rows) and SNP (columns), SNP should be coded as 0, 1 and 2 for respectively AA, AB and BB.
-Use 9 for missing data. please refer to vignette for more information)
-}
-
+    \code{character}. Path to the genotype file (animals in rows and SNPs in columns).
+    SNPs should be coded as \code{0, 1, 2} for \code{AA, AB, BB}. Use \code{9} for missing data.
+    Please refer to the vignette for more information.
+  }
   \item{separatorGenotype}{
- \code{character} separator character for genotype
+    \code{character}. Field separator used in the genotype file.
+  }
+  \item{check}{
+    \code{logical}. If \code{TRUE}, check the genotype file for possible errors.
+  }
 }
-
-\item{check}{
-\code{logical} check the genotype file for possible errors
-}
-
-}
-
 \note{
-Please refer to vignette for more information.
+Please refer to the vignette for more information.
 }
-
-
 \value{
-Returns the genotype matrix.
+A genotype \code{matrix}.
 }
-\examples{
-# A comprehensive demo and example dataset is available from
-# http://www-personal.une.edu.au/~cgondro2/hsphase.html
-}
+\keyword{io}
+\keyword{genotype}

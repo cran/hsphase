@@ -1,18 +1,20 @@
 \name{genotypes}
 \docType{data}
 \alias{genotypes}
-\title{Example of Genotype Data Set}
+\title{Example Genotype Data Set}
 \description{
-  This data set serves as an example of a genotype matrix intended for use with the \code{hsphase} package. 
-  }
+An example genotype matrix for the \pkg{hsphase} package.
+}
 \usage{
 data(genotypes)
 }
 \format{
-  The data set is a genotype matrix with specific structure, including:
-  \itemize{
-    \item \strong{Columns:} Represent Single Nucleotide Polymorphisms (SNPs). Each column corresponds to a specific SNP.
-    \item \strong{Rows:} Represent individual animals. Each row corresponds to the genotypic data for a single animal across various SNPs.
-  }
+A genotype \code{matrix} with:
+\itemize{
+  \item \strong{Columns:} SNPs
+  \item \strong{Rows:} animals/individuals
 }
+Genotype coding follows the package conventions (typically \code{0, 1, 2} and \code{9} for missing).
+}
+\references{Sahoo S., Ferdosi M.H., van der Werf J.H.J., and de las Heras-Saldana S., et al. (2025) \emph{Proc. Assoc. Advmt. Anim. Breed. Genet}. 26: 323}
 \keyword{datasets}

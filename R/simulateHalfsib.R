@@ -70,5 +70,5 @@
     phasedhalf[index2, ] <- halfsibsM
     if (type == "genotype") 
         halfsibs
-    else phasedhalf
+    else list(phased=phasedhalf,geno=halfsibs,sire=sire)
 } 

@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http:#www.gnu.org/licenses/>.
 
-para <- function(halfsibs, cpus = 1, option = "bmh", type = "SOCK", bmh_forwardVectorSize = 30, bmh_excludeFP = TRUE, bmh_nsap = 3, pmMethod = "constant")
+para <- function(halfsibs, cpus = 1, option = "bmh", type = "SOCK", bmh_forwardVectorSize = 30, bmh_excludeFP = TRUE, bmh_nsap = 3, bmh_fillMissing  = FALSE, pmMethod = "constant")
 {
     debut <- proc.time()
     if (!is.list(halfsibs)) 
@@ -22,21 +22,21 @@ para <- function(halfsibs, cpus = 1, option = "bmh", type = "SOCK", bmh_forwardV
     {
         if (!is.null(x))
         {
-            bmh(x, forwardVectorSize = bmh_forwardVectorSize, excludeFP = bmh_excludeFP, nsap = bmh_nsap)
+            bmh(x, forwardVectorSize = bmh_forwardVectorSize, excludeFP = bmh_excludeFP, nsap = bmh_nsap, fillMissing = bmh_fillMissing)
         }
     }
     aioRnull <- function(x)
     {
         if (!is.null(x))
         {
-            aio(x, bmh_forwardVectorSize = bmh_forwardVectorSize, bmh_excludeFP = bmh_excludeFP, bmh_nsap = bmh_nsap)
+            aio(x, bmh_forwardVectorSize = bmh_forwardVectorSize, bmh_excludeFP = bmh_excludeFP, bmh_nsap = bmh_nsap, bmh_fillMissing = bmh_fillMissing)
         }
     }
     rec <- function(x)
     {
         if (!is.null(x))
         {
-            y <- pm(bmh(x, forwardVectorSize = bmh_forwardVectorSize, excludeFP = bmh_excludeFP, nsap = bmh_nsap), method = pmMethod)
+            y <- pm(bmh(x, forwardVectorSize = bmh_forwardVectorSize, excludeFP = bmh_excludeFP, nsap = bmh_nsap, fillMissing = bmh_fillMissing), method = pmMethod)
             y <- apply(y, 2, sum)
             y[y > nrow(x)/2] <- 0
             # names(y)=colnames(x)[-1]
@@ -66,11 +66,12 @@ para <- function(halfsibs, cpus = 1, option = "bmh", type = "SOCK", bmh_forwardV
     {
         allhs <- sfLapply(halfsibs, function(x)
         {
-            ssp(bmh(x, forwardVectorSize = bmh_forwardVectorSize, excludeFP = bmh_excludeFP, nsap = bmh_nsap), x)
+            ssp(bmh(x, forwardVectorSize = bmh_forwardVectorSize, excludeFP = bmh_excludeFP, nsap = bmh_nsap, fillMissing = bmh_fillMissing), x)
         })
-        sfRemoveAll()
-        sfStop()
+      
     }
+	sfRemoveAll()
+	sfStop()
     print(proc.time() - debut)
     allhs
 } 

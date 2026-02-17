@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http:#www.gnu.org/licenses/>.
 
-bmh <- function(GenotypeMatrix, forwardVectorSize = 30, excludeFP = TRUE, nsap = 3)
+bmh <- function(GenotypeMatrix, forwardVectorSize = 30, excludeFP = TRUE, nsap = 3, fillMissing  = FALSE)
 {
     nsap <- nsap - 1
     if (is.null(GenotypeMatrix)) 
@@ -47,7 +47,8 @@ bmh <- function(GenotypeMatrix, forwardVectorSize = 30, excludeFP = TRUE, nsap =
     if (length(siregenotype[siregenotype == 1]) < 2) 
 	{
         print(rownames(GenotypeMatrix))
-		stop("Less than two heterozygote sites was detected ... ")
+		warning("Less than two heterozygote sites was detected ... ")
+                return(1)
 	}
     result <- .C("bmh", expandMat = as.integer(expandMat), zeroFrq = as.integer(zeroFreq), oneFreq = as.integer(oneFreq), 
         twoFreq = as.integer(twoFreq), nrow = as.integer(nrow(GenotypeMatrix)), ncol = as.integer(ncol(GenotypeMatrix)), 
@@ -57,5 +58,15 @@ bmh <- function(GenotypeMatrix, forwardVectorSize = 30, excludeFP = TRUE, nsap =
         rownames(result) <- rownames(GenotypeMatrix)
     if (!is.null(colnames(GenotypeMatrix))) 
         colnames(result) <- colnames(GenotypeMatrix)
-    .hblock(result)
+	if(fillMissing)
+	{
+		result[result!=3&result!=4] <- 0
+		result[result==3] <- 1
+		result[result==4] <- 2
+		t(apply(result,1,hsphase::.fillGap))
+	}
+	else
+	{
+		.hblock(result)
+	}
 } 

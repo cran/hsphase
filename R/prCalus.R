@@ -12,7 +12,52 @@
 
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http:#www.gnu.org/licenses/>.
-
+#' Calus-style recursive clustering of individuals using an OH matrix
+#'
+#' Performs a recursive hierarchical clustering on an opposing-homozygotes (OH)
+#' matrix to split individuals into two groups at each step (Ward clustering),
+#' until within-group OH values fall below a threshold derived from allele
+#' frequencies estimated from the genotype matrix.
+#'
+#' The function returns a two-column data frame containing individual IDs and an
+#' assigned group code. Group codes are generated randomly (via \code{rnorm()})
+#' and therefore are not stable across runs.
+#'
+#' @param oh A numeric matrix representing the opposing-homozygotes (OH) counts
+#'   between individuals. Row and column names should be individual IDs. The
+#'   matrix is expected to be square and symmetric.
+#' @param genotype A numeric genotype matrix of dimension \eqn{n \times m}
+#'   (individuals \eqn{\times} SNPs), coded as 0 (AA), 1 (AB), 2 (BB), and 9 for
+#'   missing values (as used in \code{hsphase}).
+#'
+#' @details
+#' The threshold \code{maxsnpnooh} is computed from per-SNP minor allele
+#' frequencies (\code{.maf}) and then reduced by 10\%. The recursion proceeds as:
+#' \enumerate{
+#'   \item Compute pairwise distances from \code{oh} using \code{.fastdist} and
+#'   convert to a \code{dist} object.
+#'   \item Apply hierarchical clustering (\code{\link[stats]{hclust}} with
+#'   \code{method = "ward.D"}).
+#'   \item Cut the dendrogram into \code{k = 2} groups.
+#'   \item For each group, compute the maximum within-group OH value; if it
+#'   exceeds \code{maxsnpnooh} and group size is > 2, recurse into that subgroup.
+#'   Otherwise, write group assignments to a temporary file and stop recursion.
+#' }
+#'
+#' @return A \code{data.frame} with columns:
+#' \describe{
+#'   \item{id}{Individual ID (character).}
+#'   \item{group}{An integer-like group code (generated randomly; not reproducible).}
+#' }
+#'
+#' @section Side effects:
+#' This function writes to and reads from a file named \code{"temp.txt"} in the
+#' current working directory, and then deletes it.
+#'
+#' @seealso \code{\link[stats]{hclust}}, \code{\link[stats]{cutree}},
+#'   \code{\link[stats]{as.dist}}
+#'
+#' @keywords internal
 .prCalus <- function(oh, genotype)
 {
 	maf_geno <- function(x)
@@ -41,7 +86,7 @@
 		d <- as.dist(.fastdist(oh))
 		if (length(d) > 2)
 		{
-			fit <- hclust(d, method = "ward")
+			fit <- hclust(d, method = "ward.D")
 			groups <- cutree(fit, k = 2)
 			a <- which(groups == 1)
 			b <- which(groups == 2)
@@ -72,23 +117,23 @@
 			} else
 			{
 				
-				write.table(data.frame(names(a), round(abs(rnorm(1) * 10^5))), "temp.txt", append = TRUE, col.names = FALSE, row.names = FALSE)
+				utils::write.table(data.frame(names(a), round(abs(rnorm(1) * 10^5))), "temp.txt", append = TRUE, col.names = FALSE, row.names = FALSE)
 			}
 			if (maxSubohB > maxsnpnooh && length(b) > 2)
 			{
 				rhsr_rc(oh[b, b], maxsnpnooh)
 			} else
 			{
-				write.table(data.frame(names(b), round(abs(rnorm(1) * 10^6))), "temp.txt", append = TRUE, col.names = FALSE, row.names = FALSE)
+				utils::write.table(data.frame(names(b), round(abs(rnorm(1) * 10^6))), "temp.txt", append = TRUE, col.names = FALSE, row.names = FALSE)
 			}
 		} else
 		{
 			if (!is.integer(oh)) 
-				write.table(data.frame(rownames(oh), round(abs(rnorm(1) * 10^6))), "temp.txt", append = TRUE, col.names = FALSE, row.names = FALSE)
+				utils::write.table(data.frame(rownames(oh), round(abs(rnorm(1) * 10^6))), "temp.txt", append = TRUE, col.names = FALSE, row.names = FALSE)
 		}
 	}
 	result <- rhsr_rc(oh, maxsnpnooh)
-	result <- read.table("temp.txt", header = TRUE)
+	result <- utils:: read.table("temp.txt", header = TRUE)
 	file.remove("temp.txt")
 	result
 } 

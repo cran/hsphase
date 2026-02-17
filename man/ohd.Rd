@@ -1,53 +1,40 @@
 \name{ohd}
 \alias{ohd}
-\docType{package}
-\title{
-Opposing Homozygote Detection}
+\title{Opposing Homozygote Detection}
 \description{
-Counts the number of opposing homozygotes for each animal that caused a heterozygus site in the sire.
+Counts, for each animal, the number of loci where it contributes opposing homozygotes in sites that imply heterozygosity in the sire.
 }
 \usage{
 ohd(genotypeMatrix, unique_check = FALSE, SNPs = 6000)
 }
 \arguments{
   \item{genotypeMatrix}{
-{\code{matrix} half-sib genotypes (one half-sib per row, with SNP ordered by mapping position in the columns. Data should be numeric. Use 0, 1 and 2 respectively for AA, AB and BB. Use 9 for missing data)
+    \code{matrix}. Half-sib genotypes (one half-sib per row, SNPs ordered by mapping position in the columns).
+    Data should be numeric: \code{0, 1, 2} for \code{AA, AB, BB} and \code{9} for missing.
+  }
+  \item{unique_check}{
+    \code{logical}. If \code{TRUE}, counts opposing homozygotes using a uniqueness rule (see Details).
+  }
+  \item{SNPs}{
+    \code{integer}. Number of SNPs to use. (Only applicable if supported by the installed version.)
+  }
 }
-
-}
-\item{unique_check}{
-{\code{logical} check if samples uniquely originate an opposing homozygote at a locus
-}
-
-}
-
- \item{SNPs}{
-{\code{integer} number of SNP to use
-}
-
-}
-}
-
 \value{
-Returns a vector with the number of heterozygous sites that each sample caused.
+A numeric vector with the number of heterozygous sites that each sample caused.
 }
 \note{
-This function can be used to identify pedigree errors; i.e., the outliers.
+This function can be used to identify pedigree errors; i.e., outliers with unusually high values.
 }
 \author{
-This method is suggested by Bruce Tier <btier@une.edu.au> to identify pedigree errors.
+This method was suggested by Bruce Tier <btier@une.edu.au> to identify pedigree errors.
 }
-
 \examples{
-genotype <- matrix(c(        
-  2,1,0,                  
-  2,0,0,                  
-  0,0,2                   
-  ), byrow = TRUE, ncol = 3)    
-  
-ohd(genotype)             
+genotype <- matrix(c(
+  2,1,0,
+  2,0,0,
+  0,0,2
+), byrow = TRUE, ncol = 3)
+
+ohd(genotype)
 }
-
 \keyword{opposing homozygote}
-
-

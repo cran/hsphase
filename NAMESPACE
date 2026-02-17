@@ -1,6 +1,5 @@
 import("snowfall","Rcpp","stats","graphics","grDevices")
-importFrom("utils","read.table","write.table")
 useDynLib(hsphase, .registration = TRUE)
-export("bmh","imageplot","hbp","ssp","aio","phf","pm","rplot","hss","cs","para","recombinations",
-"ohg","hh","ohplot","pogc",".simulateHalfsib",".maf",".fastdist")
+export(".simulateHalfsib","hh",".phfnoGenotype",".prSimple",".rpohhsphase",".fastdist",".prCalus",".maf",
+".prManual", "ohplot","pogc",".ibdCluster",".fillGap",".o2tH",".fixRotation",".fixBothStrand",".hblock")
 exportPattern("^[[:alpha:]]+")

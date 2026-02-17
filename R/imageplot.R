@@ -1,8 +1,36 @@
-# This is a modified version of function which was written by Chris Seidel, available via this link:
-# http://www.phaget4.org/R/image_matrix.html
+# This is a modified version of function which was written by Chris Seidel, available via this link: http://www.phaget4.org/R/image_matrix.html
 
 imageplot <- function(x, title = c(), rv = FALSE, ...)
 {
+    
+    if (rv == TRUE)
+    {
+        if (length(x[x == 0]) == 0)
+        {
+            ColorRamp <- c("#386CB0", "#FB8072")
+        } else if (length(x[x == 100]) > 0)
+        {
+            ColorRamp <- c("#FFFFFF", "#FFFFFF", "#FFFFFF", "#386CB0", "#FB8072", "#4DAF4A")
+            x[x == 100] <- 5
+        } else
+        {
+            ColorRamp <- c("#FFFFFF", "#FFFFFF", "#FFFFFF", "#386CB0", "#FB8072")
+        }
+    } else
+    {
+        if (length(x[x == 0]) == 0)
+        {
+            ColorRamp <- c("#FB8072", "#386CB0")
+        } else if (length(x[x == 100]) > 0)
+        {
+            ColorRamp <- c("#FFFFFF", "#FFFFFF", "#FFFFFF", "#FB8072", "#386CB0", "#4DAF4A")
+            x[x == 100] <- 5
+        } else
+        {
+            ColorRamp <- c("#FFFFFF", "#FFFFFF", "#FFFFFF", "#FB8072", "#386CB0")
+        }
+    }
+    
     x[x == 1] <- 3
     x[x == 2] <- 4
     min <- min(x)
@@ -38,34 +66,12 @@ imageplot <- function(x, title = c(), rv = FALSE, ...)
     {
         yLabels <- c(1:nrow(x))
     }
-    if (rv == TRUE)
-    {
-        if (length(x[x == 0]) == 0)
-        {
-            ColorRamp <- c("#386CB0", "#FB8072")
-        }
-        else
-        {
-            ColorRamp <- c("#FFFFFF", "#FFFFFF", "#FFFFFF", "#386CB0", "#FB8072")
-        }
-    }
-    else
-    {
-        if (length(x[x == 0]) == 0)
-        {
-            ColorRamp <- c("#FB8072", "#386CB0")
-        }
-        else
-        {
-            ColorRamp <- c("#FFFFFF", "#FFFFFF", "#FFFFFF", "#FB8072", "#386CB0")
-        }
-    }
+    
     ColorLevels <- seq(min, max, length = length(ColorRamp))
     reverse <- nrow(x):1
     yLabels <- yLabels[reverse]
     x <- x[reverse, ]
-    image(1:length(xLabels), 1:length(yLabels), t(x), col = ColorRamp, xlab = "", ylab = "", axes = FALSE, zlim = c(min, 
-        max))
+    image(1:length(xLabels), 1:length(yLabels), t(x), col = ColorRamp, xlab = "", ylab = "", axes = FALSE, zlim = c(min, max))
     if (!is.null(title))
     {
         title(main = title)
@@ -75,4 +81,5 @@ imageplot <- function(x, title = c(), rv = FALSE, ...)
     mtext(side = 4, paste("Number of half-sibs: ", nrow(x)))
     mtext(side = 3, paste("Number of markers:", ncol(x)))
     layout(1)
-} 
+}
+ 
