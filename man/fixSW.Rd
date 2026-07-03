@@ -31,6 +31,9 @@ A haplotype \code{matrix} with switch errors corrected.
 \code{\link{groupMatSingle}} and \code{\link{addSwitch}}
 }
 \examples{
+if (requireNamespace("RhpcBLASctl", quietly = TRUE))
+    RhpcBLASctl::omp_set_num_threads(2)
+
 haplotype <- .simulateHalfsib(7, 2500, type = "haplotype")$phased
 switches <- list(500,0,0,1200,c(1000,2000),500,1200)
 

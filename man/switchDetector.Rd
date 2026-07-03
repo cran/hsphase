@@ -20,6 +20,10 @@ Each vector contains the locations of detected switch errors for that individual
 \code{\link{groupMatSingle}}
 }
 \examples{
+
+if (requireNamespace("RhpcBLASctl", quietly = TRUE))
+    RhpcBLASctl::omp_set_num_threads(2)
+
 haplotype <- .simulateHalfsib(8, 3000, type = "haplotype")$phased
 switches <- list(2500,0,0,1200,c(1000,2000),500,2000,0)
 

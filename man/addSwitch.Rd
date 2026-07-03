@@ -36,6 +36,9 @@ A \code{matrix} of the same dimension as \code{haplotypeMatrix} with switches ap
 \code{\link{groupMatSingle}} and \code{\link{fixSW}}
 }
 \examples{
+if (requireNamespace("RhpcBLASctl", quietly = TRUE))
+    RhpcBLASctl::omp_set_num_threads(2)
+
 haplotype <- matrix(c(0, 0, 0, 0,
                       1, 1, 1, 1,
                       0, 0, 1, 1,

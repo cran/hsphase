@@ -1,4 +1,4 @@
-a8aea6282489cdc6c1d92c99571e62fa *DESCRIPTION
+0fa1d2042bef0077e0044487ced2cdd3 *DESCRIPTION
 670f02ef12dbff51106c8565d490502e *NAMESPACE
 4db80429e8434b568f09e28cc25c35de *R/aio.R
 cce1b4b74b6a05865c0772a59e8693d2 *R/bmh.R
@@ -34,7 +34,7 @@ b793c4a1e8ef57b8f2fddc9ce1829b1d *R/ssp.R
 86cc7ec212a7fcdcc293266baa544360 *R/switch.R
 9fcba781130d26fc2f5d61bbc7e0bd5e *R/switchDetector.R
 30b522528fd986153e31872b9f4519d2 *R/two2oneRow.R
-ab4d3671a0a35447dda361c666b83fad *build/vignette.rds
+b804dd218813df47139ae1945537a539 *build/vignette.rds
 0ecf2cfa7ee465ebdd3e9fd9064730e8 *data/genotypes.rda
 71afd86079ebd4901e8511807f2243c4 *data/map.txt.gz
 d8470085674b544a39d7f7155246b39f *data/pedigree.txt.gz
@@ -43,8 +43,8 @@ d8470085674b544a39d7f7155246b39f *data/pedigree.txt.gz
 54e098198220bdd10ed0d40e72caf96c *inst/CITATION
 791ea90a6191c01509527ae4e9da354d *inst/doc/hsphase.R
 0ed1a4877d13cf4266a6c0519f25090d *inst/doc/hsphase.Rnw
-fb426a5d1ac3ce97a7a5b818b0b4bae0 *inst/doc/hsphase.pdf
-9c296274858ae360278e6c9b9a32fabc *man/addSwitch.Rd
+dced48bba6b987c0be8b0fdfc281e254 *inst/doc/hsphase.pdf
+9fdb99f166a3ee1090e173e8ce3edcd1 *man/addSwitch.Rd
 2466d6cc2c5f057cb68cf660edee5c5d *man/aio.Rd
 4a888b2ee81e32a9b30d96cb58f9fc39 *man/bmh.Rd
 d29c0fa03b3e05e0ae1c0d69f6b90df2 *man/co.Rd
@@ -64,7 +64,7 @@ da7699bf85d15017ab5db26dc926c8e4 *man/dot-phfnoGenotype.Rd
 999d8e53121f9c2f1b23c8a7428ebd69 *man/dot-ptr2por.Rd
 d2ef1436a3168e9ae6d87a2166e1256c *man/dot-rpohhsphase.Rd
 162d412287302920b77272108f3c18ad *man/dot-simulateHalfsib.Rd
-d93c0a1f4028862d9ddecd2e340e8e3a *man/fixSW.Rd
+7e37d2bc7116b947ee2cf05e57189a43 *man/fixSW.Rd
 61d4ca97251ef9efba1e3a7e39b1b644 *man/genotypes.Rd
 662e1c6535fdb316fa98ede451894e0f *man/groupMatSingle.Rd
 5041b1621aa0504dfec83e37be5fdc13 *man/hbp.Rd
@@ -88,7 +88,7 @@ b88ed526eb59aa5b33c4c0e8a8c8dc97 *man/recombinations.Rd
 d93826276369cba19c2f54c3e6de8048 *man/rplot.Rd
 a2c14fc1623bfe6bd95d63facb95f7c3 *man/rpoh.Rd
 cce92be83d784c900e8c507f5a1ce8f8 *man/ssp.Rd
-66e4279076b5356ecc2822324061ca50 *man/switchDetector.Rd
+1d58d804e9f808f3e1cc4fa4a93e6251 *man/switchDetector.Rd
 0d167c530633892f5fda4faa6b6504df *src/FastDist.cpp
 972fc1ae3e72385d53cff89ce523d13a *src/FastDist.h
 831913b78138f11baeab45a20f784a3e *src/FillGap.cpp
@@ -98,10 +98,10 @@ ab82da9ae06e665a8f2a64086d330703 *src/FixBothStrand.cpp
 5cd5b87e700bd1b32581b47ba6f8ac89 *src/MAF.cpp
 04b95db8f2e583f56ba24d27e86e6592 *src/MAF.h
 923ea7172bd05c6523284e898c090b5f *src/Makevars
-54727ef4030ae693216aeb9d91568699 *src/Makevars.win
+9ae100fdd0b23ebcdaefe1704a0077ff *src/Makevars.win
 0278845eeddb211838c55d6ccaaf7e74 *src/Ohd.cpp
 881d0046b08df14d116addd421e40d2f *src/Ohd.h
-afca2485d5d57a30cf6a9b1c28ecbcef *src/SwitchAdd.cpp
+76ab9439d399f01810c82aae5e3fc9b5 *src/SwitchAdd.cpp
 3b6745f03f9ca36fd8c35177ffce82c3 *src/SwitchAdd.h
 6ba405a11f2a6888425dcf9ea07cc6af *src/SwitchDetector.cpp
 3b97d901f1819248ce23e10ddb9583b5 *src/SwitchDetector.h
